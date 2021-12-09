@@ -36,7 +36,6 @@
     "react-loading-skeleton": "^2.1.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
     "react-spring": "^8.0.27",
     "redux-localstorage-simple": "^2.3.1",
     "styled-components": "^5.1.1",
@@ -70,6 +69,9 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.5",
     "@types/styled-components": "^5.1.2",
-    "prettier": "2.3.1"
+    "autoprefixer": "^9.8.8",
+    "postcss": "^7.0.39",
+    "prettier": "2.3.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   }
 }

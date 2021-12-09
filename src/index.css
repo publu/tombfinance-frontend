@@ -1,81 +1,135 @@
-body,
-html,
-h1,
-h2,
-h3,
-h4 {
-  margin: 0;
-  font-family: 'Poppins', sans-serif !important;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Amarante&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.background {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1000;
 }
 
-html,
-body {
-  overflow-y: auto;
-  height: 100%;
+.cemetry {
+  background: url(/cemetry.png);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: 50vw;
 }
 
-.makeStyles-paper-11,
-.makeStyles-paper-11 h2,
-.MuiTypography-body1,
-.MuiPaper-root,
-.MuiPaper-root h2 {
-  color: #2c2560 !important;
+.sky {
+  background: url(/sky.svg);
+  background-repeat: no-repeat;
+  background-size: 100vw;
 }
 
-body {
+.background-home {
   position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-position: center center !important;
-  background-attachment: fixed !important;
-  background-size: cover !important;
+  height: 2000px;
+  width: 100vw;
+  z-index: -1000;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Amarante', cursive !important;
+.home-grave {
+  position: absolute;
+  z-index: -100;
+  width: 100vw;
+  height: 100vh;
+  background: url(/home-grave.png);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 100vw;
+}
+@media only screen and (max-width: 700px) {
+  .home-grave {
+    background-size: 340vw;
+  }
+}
+@media only screen and (min-width: 700px, max-width: 900px) {
+  .home-grave {
+    background-size: 200vw;
+  }
 }
 
-footer .a:hover {
-  fill: '#DA4567';
+.home-sky {
+  background: url(/home-sky.svg);
+  background-repeat: no-repeat;
+  background-size: 100vw;
 }
 
-.MuiToolbar-regular {
-  color: #e0e3bd;
+@layer base {
+  body {
+    overflow-x: hidden;
+    color: rgba(255, 242, 209, 1);
+    background-color: #16072b;
+  }
+
+  .content-wrapper {
+    min-height: calc(100vh - 35px);
+    padding-bottom: 1rem;
+  }
 }
 
-.MuiButton-containedPrimary,
-.MuiButton-containedPrimary:hover,
-.MuiListItem-button:hover,
-.MuiButtonBase-root:hover {
-  color: #fff !important;
+@layer components {
+  .btn {
+    @apply bg-tombGradient rounded-2xl px-6 py-2 border text-base font-semibold border-bright-purple;
+  }
+
+  .tableRow1 {
+    background: linear-gradient(360deg, rgba(30, 0, 56, 0.75) 0%, #16002c 56.05%);
+  }
+
+  .tableRow2 {
+    background: linear-gradient(360deg, rgba(30, 0, 56, 0.75) 0%, #16002c 56.05%);
+    mix-blend-mode: exclusion;
+  }
+
+  .btn-connect {
+    color: #fff2d1;
+    text-shadow: 0px -4px 12px rgba(255, 229, 171, 0.35), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: left;
+
+    border: 1px solid transparent;
+
+    background: linear-gradient(225deg, #a839ff -45.77%, rgba(16, 0, 61, 0.5) 107.31%) padding-box,
+      linear-gradient(225deg, #f500fa -45.77%, #4100fa 107.31%) border-box;
+  }
+
+  .btn-transparent {
+    background: transparent;
+    border: 1px solid #f500fa;
+    border-radius: 12px;
+  }
+
+  .nav-selected {
+    @apply text-cyan;
+    text-shadow: 0px -2px 8px rgba(82, 194, 230, 0.5);
+  }
+
+  .textShadow {
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
-.wallet-button {
-  color: #2c2560 !important;
-  font-family: 'Poppins', sans-serif !important;
-  font-size: 1.1rem !important;
-  text-align: left !important;
-  justify-content: flex-start !important;
-  text-transform: none !important;
-}
-.wallet-button:hover {
-  background-color: black !important;
-  color: #757ce8 !important;
+@layer utilities {
+  /* @variants hover, focus {
+    .filter-none {
+      filter: none;
+    }
+    .filter-grayscale {
+      filter: grayscale(100%);
+    }
+  } */
 }

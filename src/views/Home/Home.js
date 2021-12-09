@@ -148,23 +148,25 @@ const Home = () => {
               <h2>Welcome to Tomb Finance</h2>
               <p>The first algorithmic stablecoin on Fantom Opera, pegged to the price of 1 FTM via seigniorage.</p>
               <p>
-                Stake your TOMB-FTM LP in the Cemetery to earn TSHARE rewards.
-                Then stake your earned TSHARE in the Masonry to earn more TOMB!
+                Stake your TOMB-FTM LP in the Cemetery to earn TSHARE rewards. Then stake your earned TSHARE in the
+                Masonry to earn more TOMB!
               </p>
             </Box>
           </Paper>
-
-
-
         </Grid>
 
         <Grid container spacing={3}>
-    <Grid item  xs={12} sm={12} justify="center"  style={{ margin: '12px', display: 'flex' }}>
+          <Grid item xs={12} sm={12} justify="center" style={{ margin: '12px', display: 'flex' }}>
             <Alert variant="filled" severity="warning">
               <b>
-      Please visit our <StyledLink target="_blank" href="https://docs.tomb.finance">documentation</StyledLink> before purchasing TOMB or TSHARE!</b>
+                Please visit our{' '}
+                <StyledLink target="_blank" href="https://docs.tomb.finance">
+                  documentation
+                </StyledLink>{' '}
+                before purchasing TOMB or TSHARE!
+              </b>
             </Alert>
-        </Grid>
+          </Grid>
         </Grid>
 
         {/* TVL */}
