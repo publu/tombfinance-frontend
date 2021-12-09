@@ -49,6 +49,7 @@
     "web3": "^1.2.11"
   },
   "scripts": {
+    "dev": "TAILWIND_MODE=watch craco start",
     "start": "craco start",
     "build": "CI= GENERATE_SOURCEMAP=false craco build",
     "test": "craco test",
