@@ -44,34 +44,37 @@ const App: React.FC = () => {
   return (
     <Providers>
       <Router>
-        <Suspense fallback={<Loader />}>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/cemetery">
-              <Cemetery />
-            </Route>
-            <Route path="/masonry">
-              <Masonry />
-            </Route>
-            <Route path="/pit">
-              <Pit />
-            </Route>
-            <Route path="/sbs">
-              <SBS />
-            </Route>
-            <Route path="/regulations">
-              <Regulations />
-            </Route>
-            <Route path="/liquidity">
-              <Liquidity />
-            </Route>
-            <Route path="*">
-              <NoMatch />
-            </Route>
-          </Switch>
-        </Suspense>
+        <div className="relative overflow-hidden">
+          <div className={`background bg-bgColor`} />
+          <Suspense fallback={<Loader />}>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/cemetery">
+                <Cemetery />
+              </Route>
+              <Route path="/masonry">
+                <Masonry />
+              </Route>
+              <Route path="/pit">
+                <Pit />
+              </Route>
+              <Route path="/sbs">
+                <SBS />
+              </Route>
+              <Route path="/regulations">
+                <Regulations />
+              </Route>
+              <Route path="/liquidity">
+                <Liquidity />
+              </Route>
+              <Route path="*">
+                <NoMatch />
+              </Route>
+            </Switch>
+          </Suspense>
+        </div>
       </Router>
     </Providers>
   );
