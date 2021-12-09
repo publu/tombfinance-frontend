@@ -39,7 +39,7 @@
     "react-loading-skeleton": "^2.1.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^4.0.0",
     "react-spring": "^8.0.27",
     "redux-localstorage-simple": "^2.3.1",
     "styled-components": "^5.1.1",
@@ -49,9 +49,9 @@
     "web3": "^1.2.11"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "CI= GENERATE_SOURCEMAP=false react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "CI= GENERATE_SOURCEMAP=false craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
