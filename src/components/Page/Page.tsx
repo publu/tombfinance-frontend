@@ -11,9 +11,7 @@ const Page: React.FC = ({ children }) => {
     <div className="flex flex-col justify-between">
       <div className="content-wrapper">
         <Nav />
-        <Container maxWidth="lg" style={{ paddingBottom: '5rem' }}>
-          {children}
-        </Container>
+        {children}
       </div>
       <Footer />
     </div>
