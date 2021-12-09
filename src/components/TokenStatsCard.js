@@ -1,6 +1,6 @@
 import Card from './Card';
 
-export default function TokenStatsCard({ token, ftmPrice, usdPrice, mktCap, circSupply, totalSupply }) {
+export default function TokenStatsCard({ token, ftmPrice, usdPrice, mktCap, circSupply, totalSupply, disabled, link }) {
   return (
     <Card paddingClass="px-8 py-4" innerClass="flex flex-col text-center items-center">
       <div className="flex justify-between items-center gap-x-6 mb-3">
@@ -35,7 +35,14 @@ export default function TokenStatsCard({ token, ftmPrice, usdPrice, mktCap, circ
         <span className="text-white text-lg font-semibold tracking-wider">{totalSupply}</span>
       </div>
       <div className="mt-4">
-        <button className="btn font-bold">BUY {token}</button>
+        <button
+          disabled
+          className={`${disabled ? 'btn-disabled disabledGradient cursor-not-allowed' : 'btn font-bold'}`}
+        >
+          <a target="_blank" rel="noopener noreferrer" href={link}>
+            BUY {token}
+          </a>
+        </button>
       </div>
     </Card>
   );

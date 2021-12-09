@@ -77,6 +77,10 @@
     @apply bg-tombGradient rounded-2xl px-6 py-2 border text-base font-semibold border-bright-purple;
   }
 
+  .btn-disabled {
+    @apply bg-disabledGradient rounded-2xl px-6 py-2 border text-base font-semibold border-gray-500;
+  }
+
   .tableRow1 {
     background: linear-gradient(360deg, rgba(30, 0, 56, 0.75) 0%, #16002c 56.05%);
   }

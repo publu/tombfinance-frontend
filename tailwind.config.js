@@ -17,6 +17,7 @@ module.exports = {
       },
       backgroundImage: {
         tombGradient: 'linear-gradient(225deg, #A839FF, rgba(16, 0, 61, 1) 107.31%)',
+        disabledGradient: 'linear-gradient(225deg, #A9A9A9, rgba(16, 0, 61, 1) 107.31%)',
         tombBackground: 'linear-gradient(360deg, rgba(30, 0, 56, 1), #16002c)',
       },
       borderWidth: {
