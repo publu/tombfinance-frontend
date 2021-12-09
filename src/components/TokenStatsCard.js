@@ -3,7 +3,7 @@ import Card from './Card';
 export default function TokenStatsCard({ token, ftmPrice, usdPrice, mktCap, circSupply, totalSupply, disabled, link }) {
   return (
     <Card paddingClass="px-8 py-4" innerClass="flex flex-col text-center items-center">
-      <div className="flex justify-between items-center gap-x-6 mb-3">
+      <div className="flex justify-between items-center gap-x-6 mb-3 mt-2">
         <div className="flex flex-shrink-0">
           <img src={`../assets/img/${token}.svg`} width={25} height={25} />
           <span className="font-Amarante text-lg tracking-wider">${token}</span>
@@ -34,7 +34,7 @@ export default function TokenStatsCard({ token, ftmPrice, usdPrice, mktCap, circ
       <div className="">
         <span className="text-white text-lg font-semibold tracking-wider">{totalSupply}</span>
       </div>
-      <div className="mt-4">
+      <div className="mt-4 mb-3">
         <button
           disabled
           className={`${disabled ? 'btn-disabled disabledGradient cursor-not-allowed' : 'btn font-bold'}`}

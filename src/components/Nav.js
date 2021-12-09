@@ -1,7 +1,14 @@
-import React from 'react';
+import { React, useMemo } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { Link } from 'react-router-dom';
+import useTombStats from '../hooks/useTombStats';
+import usetShareStats from '../hooks/usetShareStats';
+import useBondStats from '../hooks/useBondStats';
+
+import { tomb as tombProd, tShare as tShareProd } from '../tomb-finance/deployments/deployments.mainnet.json';
+
+import AccountButton from './Nav_Old/AccountButton';
 
 // import WalletIcon from '../assets/img/wallet.svg';
 
@@ -19,6 +26,22 @@ function classNames(...classes) {
 }
 
 export default function Nav() {
+  const tombStats = useTombStats();
+  const tShareStats = usetShareStats();
+  const tBondStats = useBondStats();
+
+  let tomb;
+  let tShare;
+  tomb = tombProd;
+  tShare = tShareProd;
+
+  const tombPriceInFTM = useMemo(() => (tombStats ? Number(tombStats.tokenInFtm).toFixed(4) : null), [tombStats]);
+  const tSharePriceInFTM = useMemo(
+    () => (tShareStats ? Number(tShareStats.tokenInFtm).toFixed(4) : null),
+    [tShareStats],
+  );
+  const tBondPriceInFTM = useMemo(() => (tBondStats ? Number(tBondStats.tokenInFtm).toFixed(4) : null), [tBondStats]);
+
   return (
     <Disclosure as="nav">
       {({ open }) => (
@@ -66,24 +89,21 @@ export default function Nav() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button type="button" className="hidden sm:flex flex-shrink-0 btn btn-connect">
-                  {/* <WalletIcon className="md:mr-2" aria-hidden="true" /> */}
-                  <span className="hidden md:block">Connect Wallet</span>
-                </button>
+                <AccountButton className="hidden md:block" text="Connect Wallet" />
               </div>
             </div>
             <div className="flex justify-center gap-x-4 mt-3">
               <div className="flex items-center">
                 <img src={`/TOMB.svg`} width={25} height={25} />
-                <span className="ml-2 font-semibold text-sm">1.1527 FTM</span>
+                <span className="ml-2 font-semibold text-sm">{tombPriceInFTM ? tombPriceInFTM : '-.----'} FTM</span>
               </div>
               <div className="flex items-center">
                 <img src={`/TBOND.svg`} width={25} height={25} />
-                <span className="ml-2 font-semibold text-sm">1.29 FTM</span>
+                <span className="ml-2 font-semibold text-sm">{tBondPriceInFTM ? tBondPriceInFTM : '-.----'} FTM</span>
               </div>
               <div className="flex items-center">
                 <img src={`/TSHARE.svg`} width={25} height={25} />
-                <span className="ml-2 font-semibold text-sm">8188 FTM</span>
+                <span className="ml-2 font-semibold text-sm">{tSharePriceInFTM ? tSharePriceInFTM : '-.----'} FTM</span>
               </div>
             </div>
           </div>

@@ -122,32 +122,32 @@ const Home = () => {
       <Page>
         <div className="flex flex-col">
           <Tvl TVL={TVL} />
-          <div className="grid grid-cols-1 gap-y-3 md:grid-cols-3 mt-14 mx-auto px-16 gap-x-3 ">
+          <div className="grid grid-cols-1 gap-y-3 md:grid-cols-3 mt-14 mx-auto px-16 gap-x-3">
             <TokenStatsCard
               token="TOMB"
               ftmPrice={tombPriceInFTM ? tombPriceInFTM : '-.----'}
               usdPrice={tombPriceInDollars ? tombPriceInDollars : '-.--'}
-              mktCap={(tombCirculatingSupply * tombPriceInDollars).toFixed(2)}
-              circSupply={tombCirculatingSupply}
-              totalSupply={tombTotalSupply}
+              mktCap={tombCirculatingSupply ? (tombCirculatingSupply * tombPriceInDollars).toFixed(2) : '-.--'}
+              circSupply={tombCirculatingSupply ? tombCirculatingSupply : '-.--'}
+              totalSupply={tombTotalSupply ? tombTotalSupply : '-.--'}
               link={buyTombAddress}
             />
             <TokenStatsCard
               token="TSHARE"
               ftmPrice={tSharePriceInFTM ? tSharePriceInFTM : '-.----'}
               usdPrice={tSharePriceInDollars ? tSharePriceInDollars : '-.--'}
-              mktCap={(tShareCirculatingSupply * tSharePriceInDollars).toFixed(2)}
-              circSupply={tShareCirculatingSupply}
-              totalSupply={tShareTotalSupply}
+              mktCap={tShareCirculatingSupply ? (tShareCirculatingSupply * tSharePriceInDollars).toFixed(2) : '-.--'}
+              circSupply={tShareCirculatingSupply ? tShareCirculatingSupply : '-.--'}
+              totalSupply={tShareTotalSupply ? tShareCirculatingSupply : '-.--'}
               link={buyTShareAddress}
             />
             <TokenStatsCard
               token="TBOND"
               ftmPrice={tBondPriceInFTM ? tBondPriceInFTM : '-.----'}
               usdPrice={tBondPriceInDollars ? tBondPriceInDollars : '-.--'}
-              mktCap={(tBondCirculatingSupply * tBondPriceInDollars).toFixed(2)}
-              circSupply={tBondCirculatingSupply}
-              totalSupply={tBondTotalSupply}
+              mktCap={tBondCirculatingSupply ? (tBondCirculatingSupply * tBondPriceInDollars).toFixed(2) : '-.--'}
+              circSupply={tBondCirculatingSupply ? tBondCirculatingSupply : '-.--'}
+              totalSupply={tBondTotalSupply ? tBondTotalSupply : '-.--'}
               disabled={true}
             />
           </div>
