@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useWallet } from 'use-wallet';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import Bank from '../Bank';
@@ -12,10 +12,13 @@ import Page from '../../components/Page';
 import CemeteryCard from '../../components/CemeteryCard';
 import CemeteryPoolCard from '../../components/CemeteryPoolCard';
 import MasonryItem from '../../components/MasonryItem';
+import LiquidityButton from '../../components/LiquidityButton';
 import CemeteryImage from '../../assets/img/cemetry.png';
 import { createGlobalStyle } from 'styled-components';
 
 import useBanks from '../../hooks/useBanks';
+import useBank from '../../hooks/useBank';
+import useStatsForPool from '../../hooks/useStatsForPool';
 
 import graveDark from '../../assets/img/grave-dark.svg';
 import graveLight from '../../assets/img/grave-light.svg';
@@ -23,6 +26,14 @@ import fantom from '../../assets/img/fantom.svg';
 import danger from '../../assets/img/danger.svg';
 import boo from '../../assets/img/boo.svg';
 import linkImg from '../../assets/img/link.svg';
+import CemeteryBuyCard from '../../components/CemeteryBuyCard';
+import useTombStats from '../../hooks/useTombStats';
+import useShareStats from '../../hooks/usetShareStats';
+import { getDisplayBalance } from '../../utils/formatBalance';
+import useEarnings from '../../hooks/useEarnings';
+import useHarvest from '../../hooks/useHarvest';
+import useRedeem from '../../hooks/useRedeem';
+import CemetrySection from '../../components/CemetrySection';
 
 const BackgroundImage = createGlobalStyle`
   body {
@@ -40,6 +51,9 @@ const Cemetery = () => {
   const [showLegacy, setShowLegacy] = useState(false);
   const [showTSHARE, setShowTSHARE] = useState(false);
   const [showTomb, setShowTomb] = useState(false);
+
+  const showTombData = useBank('TombFtmLPTShareRewardPool');
+  const showTSHAREData = useBank('TshareFtmLPTShareRewardPool');
 
   useEffect(() => {
     if (!showLegacy) return;
@@ -140,43 +154,14 @@ const Cemetery = () => {
             </>
           )}
           {showTomb && (
-            <div className="w-9/12 md:w-1/2 mx-auto">
-              <div className="md:w-1/2 mx-auto mt-12">
-                <CemeteryCard
-                  title="TOMB-FTM-LP"
-                  description="Deposiy TOMB-FTM-LP Earn TOMB"
-                  buttonText="View"
-                  icon1={graveDark}
-                  icon2={fantom}
-                />
-              </div>
-              <div className="grid grid-cols-1 md:flex justify-center gap-x-4 w-full mt-8">
-                <MasonryItem title="APR" value="247.62%" />
-                <MasonryItem title="Daily APRt" value="0.68%" />
-                <MasonryItem title="TVL" value="$142,494,777" />
-              </div>
-              <div className="flex w-full justify-center mt-12">
-                <button
-                  onClick={() => setShowLegacy(!showLegacy)}
-                  className="btn flex font-light w-full md:mx-4 md:w-7/12 text-center titems-center px-2"
-                >
-                  <span className="text-center w-full">
-                    👻 Provide liquidity for TOMB-FTM <br className="md:hidden" />
-                    pair now on SpookySwap 👻
-                  </span>
-                </button>
-              </div>
-              <div className="flex w-full justify-center mt-4">
-                <button className="btn flex font-light w-full md:mx-4 md:w-7/12 text-center titems-center px-2 bg-bgColor">
-                  <span className="flex justify-center text-center w-full">
-                    <div className="mr-2">
-                      <img src={linkImg} width={20} height={20} />
-                    </div>
-                    Claim and Withdraw
-                  </span>
-                </button>
-              </div>
-            </div>
+            <>
+              <CemetrySection buttonText1="Claim" buttonText2="Approve TOMB-FTM-LP" bank={showTombData} />
+            </>
+          )}
+          {showTSHARE && (
+            <>
+              <CemetrySection bank={showTSHAREData} />
+            </>
           )}
         </div>
       </div>

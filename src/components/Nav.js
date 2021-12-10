@@ -6,6 +6,10 @@ import useTombStats from '../hooks/useTombStats';
 import usetShareStats from '../hooks/usetShareStats';
 import useBondStats from '../hooks/useBondStats';
 
+import tombIcon from '../assets/img/TOMB.svg';
+import tshare from '../assets/img/TSHARE.svg';
+import tbond from '../assets/img/TBOND.svg';
+
 import { tomb as tombProd, tShare as tShareProd } from '../tomb-finance/deployments/deployments.mainnet.json';
 
 import AccountButton from './Nav_Old/AccountButton';
@@ -94,15 +98,15 @@ export default function Nav() {
             </div>
             <div className="flex justify-center gap-x-4 mt-3">
               <div className="flex items-center">
-                <img src={`/TOMB.svg`} width={25} height={25} />
+                <img src={tombIcon} width={25} height={25} />
                 <span className="ml-2 font-semibold text-sm">{tombPriceInFTM ? tombPriceInFTM : '-.----'} FTM</span>
               </div>
               <div className="flex items-center">
-                <img src={`/TBOND.svg`} width={25} height={25} />
+                <img src={tbond} width={25} height={25} />
                 <span className="ml-2 font-semibold text-sm">{tBondPriceInFTM ? tBondPriceInFTM : '-.----'} FTM</span>
               </div>
               <div className="flex items-center">
-                <img src={`/TSHARE.svg`} width={25} height={25} />
+                <img src={tshare} width={25} height={25} />
                 <span className="ml-2 font-semibold text-sm">{tSharePriceInFTM ? tSharePriceInFTM : '-.----'} FTM</span>
               </div>
             </div>

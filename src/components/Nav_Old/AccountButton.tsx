@@ -28,7 +28,7 @@ const AccountButton: React.FC<AccountButtonProps> = ({ text }) => {
   return (
     <div>
       {!account ? (
-        <button className="btn tracking-wider" onClick={handleWalletProviderOpen}>
+        <button className="btn tracking-wider" id="account-button" onClick={handleWalletProviderOpen}>
           {buttonText}
         </button>
       ) : (

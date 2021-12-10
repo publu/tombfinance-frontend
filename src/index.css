@@ -78,7 +78,8 @@
   }
 
   .btn-disabled {
-    @apply bg-disabledGradient rounded-2xl px-6 py-2 border text-base font-semibold border-gray-500;
+    background: none;
+    @apply rounded-2xl px-6 py-2 border text-base font-semibold bg-gray-400 opacity-70 cursor-not-allowed border-gray-500;
   }
 
   .tableRow1 {

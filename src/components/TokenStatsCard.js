@@ -1,16 +1,41 @@
 import Card from './Card';
+import metaMaskIcon from '../assets/img/meta-mask.svg';
+import useWallet from 'use-wallet';
+
+import TSHARE from '../assets/img/TSHARE.svg';
+import TOMB from '../assets/img/TOMB.svg';
+import TBOND from '../assets/img/TBOND.svg';
 
 export default function TokenStatsCard({ token, ftmPrice, usdPrice, mktCap, circSupply, totalSupply, disabled, link }) {
+  const { account } = useWallet();
+  console.log(document.getElementById('account-button'));
+
+  const connectMetaMask = () => {
+    const button = document.getElementById('account-button');
+    button.click();
+    console.log(button);
+  };
+  const icons = {
+    TSHARE: TSHARE,
+    TBOND: TBOND,
+    TOMB: TSHARE,
+  };
+
   return (
     <Card paddingClass="px-8 py-4" innerClass="flex flex-col text-center items-center">
       <div className="flex justify-between items-center gap-x-6 mb-3 mt-2">
-        <div className="flex flex-shrink-0">
-          <img src={`../assets/img/${token}.svg`} width={25} height={25} />
+        <div className="flex items-center flex-shrink-0">
+          <img className="mr-2" src={icons[token]} width={25} height={25} />
           <span className="font-Amarante text-lg tracking-wider">${token}</span>
         </div>
-        <div className="flex flex-shrink-0 md:flex justify-center items-center align-middle border-1 cursor-pointer border-bright-purple rounded-xl p-1 py-2">
-          <img src={'/meta-mask.svg'} width={42} height={30} />
-        </div>
+        {!account && (
+          <div
+            onClick={() => connectMetaMask()}
+            className="flex flex-shrink-0 md:flex justify-center items-center align-middle border-1 cursor-pointer border-bright-purple rounded-xl p-1 py-2"
+          >
+            <img onClick={() => connectMetaMask()} src={metaMaskIcon} width={42} height={30} />
+          </div>
+        )}
       </div>
 
       <span className="text-tomb-purple text-xs font-semibold">Current Price</span>
