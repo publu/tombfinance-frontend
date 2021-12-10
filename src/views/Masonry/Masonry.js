@@ -28,7 +28,7 @@ import useWithdrawCheck from '../../hooks/masonry/useWithdrawCheck';
 import ProgressCountdown from './components/ProgressCountdown';
 import MasonryImage from '../../assets/img/masonry.png';
 import { createGlobalStyle } from 'styled-components';
-
+import internal from '../../assets/img/internal.svg';
 import MasonryItem from '../../components/MasonryItem';
 
 const Masonry = () => {
@@ -76,7 +76,7 @@ const Masonry = () => {
               } flex font-light justify-center items-center lg:px-32`}
             >
               <div className="mr-2 flex ">
-                <img src="/internal.svg" width={20} height={20} />
+                <img src={internal} width={20} height={20} />
               </div>
               Claim and Withdraw
             </button>

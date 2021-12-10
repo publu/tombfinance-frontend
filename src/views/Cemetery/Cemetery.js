@@ -35,6 +35,11 @@ import useHarvest from '../../hooks/useHarvest';
 import useRedeem from '../../hooks/useRedeem';
 import CemetrySection from '../../components/CemetrySection';
 
+import TSHARE from '../../assets/img/TSHARE.svg';
+import TBOND from '../../assets/img/TBOND.svg';
+import TOMB from '../../assets/img/TOMB.svg';
+// import fantom from '../../assets/img/fantom.svg';
+
 const BackgroundImage = createGlobalStyle`
   body {
     background: url(${CemeteryImage}) no-repeat !important;
@@ -155,7 +160,11 @@ const Cemetery = () => {
           )}
           {showTomb && (
             <>
-              <CemetrySection buttonText1="Claim" buttonText2="Approve TOMB-FTM-LP" bank={showTombData} />
+              <CemetrySection
+                card1={{ icon1: TSHARE, buttonText: 'Claim' }}
+                card2={{ icon1: TOMB, icon2: fantom, buttonText: 'Approve TOMB-FTM-LP' }}
+                bank={showTombData}
+              />
             </>
           )}
           {showTSHARE && (

@@ -11,7 +11,7 @@ import linkImg from '../assets/img/link.svg';
 import MasonryItem from './MasonryItem';
 import LiquidityButton from './LiquidityButton';
 
-export default function CemetrySection({ bank, icon1, icon2, buttonText1, buttonText2 }) {
+export default function CemetrySection({ bank, card1, card2 }) {
   const tombStats = useTombStats();
   const tShareStats = useShareStats();
 
@@ -49,23 +49,19 @@ export default function CemetrySection({ bank, icon1, icon2, buttonText1, button
       </div>
       <div className="grid md:grid-cols-2 md:w-3/4 mx-auto mt-20 gap-x-6">
         <CemeteryBuyCard
-          buttonText={buttonText1}
+          {...card1}
           coinValue={getDisplayBalance(earnings)}
           dollarValue={`$${showTombData.earnedInDollars}`}
           disabled={earnings.eq(0)}
           tokenName={`${showTombData.tokenName} Earned`}
-          icon1={icon1}
-          icon2={icon2}
           onClick={onTombReward}
         />
         <CemeteryBuyCard
-          buttonText={buttonText2}
+          {...card2}
           coinValue={getDisplayBalance(earnings)}
           dollarValue={`$${showTombData.earnedInDollars}`}
           disabled={earnings.eq(0)}
           tokenName={`${showTombData.tokenName} Earned`}
-          icon1={icon1}
-          icon2={icon2}
           onClick={onTombReward}
         />
       </div>
