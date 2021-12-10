@@ -37,31 +37,34 @@ const WalletProviderModal = ({ open, handleClose }) => {
       style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       onClose={handleClose}
     >
-      <div className={classes.paper}>
-        <h2>Connect Wallet</h2>
-        <List component="nav" aria-label="main mailbox folders">
-          <WalletCard
-            icon={<img src={metamaskLogo} alt="Metamask logo" style={{ height: 32 }} />}
-            onConnect={() => {
-              connect('injected');
-            }}
-            title="Metamask"
-          />
-          <WalletCard
-            icon={<img src={walletConnectLogo} alt="Wallet Connect logo" style={{ height: 24 }} />}
-            onConnect={() => {
-              connect('walletconnect');
-            }}
-            title="WalletConnect"
-          />
-          <WalletCard
-            icon={<img src={coingBaseLogo} alt="Coinbase wallet logo" style={{ height: 32 }} />}
-            onConnect={() => {
-              connect('walletlink');
-            }}
-            title="Coinbase Wallet"
-          />
-        </List>
+      <div className={`relative`}>
+        <div className={`gradient w-full h-full`} />
+        <div className={`inner bg-tombBackground text-center px-6 py-4`}>
+          <h2 className="font-bold mb-2">Connect Wallet</h2>
+          <div className="flex flex-col gap-y-2">
+            <WalletCard
+              icon={<img src={metamaskLogo} alt="Metamask logo" style={{ height: 32 }} />}
+              onConnect={() => {
+                connect('injected');
+              }}
+              title="Metamask"
+            />
+            <WalletCard
+              icon={<img src={walletConnectLogo} alt="Wallet Connect logo" style={{ height: 24 }} />}
+              onConnect={() => {
+                connect('walletconnect');
+              }}
+              title="WalletConnect"
+            />
+            <WalletCard
+              icon={<img src={coingBaseLogo} alt="Coinbase wallet logo" style={{ height: 32 }} />}
+              onConnect={() => {
+                connect('walletlink');
+              }}
+              title="Coinbase Wallet"
+            />
+          </div>
+        </div>
       </div>
     </Modal>
   );

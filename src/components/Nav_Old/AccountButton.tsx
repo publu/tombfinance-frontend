@@ -28,11 +28,11 @@ const AccountButton: React.FC<AccountButtonProps> = ({ text }) => {
   return (
     <div>
       {!account ? (
-        <button className="btn" onClick={handleWalletProviderOpen}>
+        <button className="btn tracking-wider" onClick={handleWalletProviderOpen}>
           {buttonText}
         </button>
       ) : (
-        <button className="btn" onClick={onPresentAccountModal}>
+        <button className="btn tracking-wider" onClick={onPresentAccountModal}>
           My Wallet
         </button>
       )}

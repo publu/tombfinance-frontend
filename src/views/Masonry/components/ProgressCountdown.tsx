@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Countdown, { CountdownRenderProps } from 'react-countdown';
+import Card from '../../../components/Card.js';
 
 interface ProgressCountdownProps {
   base: Date;
@@ -27,19 +28,10 @@ const ProgressCountdown: React.FC<ProgressCountdownProps> = ({ base, deadline, h
     );
   };
   return (
-    // <Card>
-    <StyledCardContentInner>
-      {/* <StyledDesc>{description}</StyledDesc> */}
+    <Card className="mt-4" innerClass="p-2 md:p-4 text-center text-3xl">
+      <h2 className="text-sm">Next Epoch</h2>
       <Countdown key={new Date().getTime()} date={deadline} renderer={countdownRenderer} />
-      {hideBar ? (
-        ''
-      ) : (
-        <StyledProgressOuter>
-          <StyledProgress progress={percentage} />
-        </StyledProgressOuter>
-      )}
-    </StyledCardContentInner>
-    // </Card>
+    </Card>
   );
 };
 

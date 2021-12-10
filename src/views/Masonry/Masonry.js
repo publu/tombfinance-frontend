@@ -29,24 +29,9 @@ import ProgressCountdown from './components/ProgressCountdown';
 import MasonryImage from '../../assets/img/masonry.png';
 import { createGlobalStyle } from 'styled-components';
 
-const BackgroundImage = createGlobalStyle`
-  body, html {
-    background: url(${MasonryImage}) no-repeat !important;
-    background-size: cover !important;
-  }
-`;
-
-const useStyles = makeStyles((theme) => ({
-  gridItem: {
-    height: '100%',
-    [theme.breakpoints.up('md')]: {
-      height: '90px',
-    },
-  },
-}));
+import MasonryItem from '../../components/MasonryItem';
 
 const Masonry = () => {
-  const classes = useStyles();
   const { account } = useWallet();
   const { onRedeem } = useRedeemOnMasonry();
   const stakedBalance = useStakedBalanceOnMasonry();
@@ -61,123 +46,41 @@ const Masonry = () => {
 
   return (
     <Page>
-      <BackgroundImage />
       {!!account ? (
         <>
-          <Typography color="textPrimary" align="center" variant="h3" gutterBottom>
-            Masonry
-          </Typography>
-          <Box mt={5}>
-            <Grid container justify="center" spacing={3}>
-              <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-                <Card className={classes.gridItem}>
-                  <CardContent>
-                    <Typography style={{ textAlign: 'center' }}>Next Epoch</Typography>
-                    <ProgressCountdown base={moment().toDate()} hideBar={true} deadline={to} description="Next Epoch" />
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-                <Card className={classes.gridItem}>
-                  <CardContent align="center">
-                    <Typography>Current Epoch</Typography>
-                    <Typography>{Number(currentEpoch)}</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-                <Card className={classes.gridItem}>
-                  <CardContent align="center">
-                    <Typography>
-                      TOMB Price<small>(TWAP)</small>
-                    </Typography>
-                    <Typography>{scalingFactor}</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-                <Card className={classes.gridItem}>
-                  <CardContent align="center">
-                    <Typography>APR</Typography>
-                    <Typography>{masonryAPR.toFixed(2)}%</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} md={2} lg={2}>
-                <Card className={classes.gridItem}>
-                  <CardContent align="center">
-                    <Typography>TSHARES Staked</Typography>
-                    <Typography>{getDisplayBalance(totalStaked)}</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
+          <div className="flex flex-col mr-0 sm:mr-8 items-center mt-10 mb-10">
+            <span className="text-6xl font-Amarante tracking-tighter">Masonry</span>
+          </div>
 
-            <Grid container justify="center">
-              <Box mt={3} style={{ width: '600px' }}>
-                <Alert variant="filled" severity="warning">
-                  Staked TSHAREs can only be withdrawn after 6 epochs since deposit.
-                </Alert>
-              </Box>
-            </Grid>
+          <div className="xl:w-9/12 mx-auto gap-x-10 px-10">
+            <MasonryItem title={'APR'} value={masonryAPR.toFixed(2) + '%'} />
+          </div>
+          <div className="grid md:grid-cols-2 xl:w-9/12 mx-auto gap-x-10 px-10">
+            <ProgressCountdown base={moment().toDate()} hideBar={true} deadline={to} description="Next Epoch" />
+            <MasonryItem title={'Current Epoch'} value={Number(currentEpoch)} />
+            <MasonryItem title={'TWAP'} value={scalingFactor} />
+            <MasonryItem title={'TSHARES Staked'} value={getDisplayBalance(totalStaked)} />
+          </div>
 
-            <Box mt={4}>
-              <StyledBoardroom>
-                <StyledCardsWrapper>
-                  <StyledCardWrapper>
-                    <Harvest />
-                  </StyledCardWrapper>
-                  <Spacer />
-                  <StyledCardWrapper>
-                    <Stake />
-                  </StyledCardWrapper>
-                </StyledCardsWrapper>
-              </StyledBoardroom>
-            </Box>
+          <div className="grid lg:grid-cols-2 mx-auto w-9/12 lg:w-1/2 mt-16 gap-x-4 gap-y-10">
+            <Stake />
+            <Harvest />
+          </div>
 
-            {/* <Grid container justify="center" spacing={3}>
-            <Grid item xs={4}>
-              <Card>
-                <CardContent align="center">
-                  <Typography>Rewards</Typography>
-
-                </CardContent>
-                <CardActions style={{justifyContent: 'center'}}>
-                  <Button color="primary" variant="outlined">Claim Reward</Button>
-                </CardActions>
-                <CardContent align="center">
-                  <Typography>Claim Countdown</Typography>
-                  <Typography>00:00:00</Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={4}>
-              <Card>
-                <CardContent align="center">
-                  <Typography>Stakings</Typography>
-                  <Typography>{getDisplayBalance(stakedBalance)}</Typography>
-                </CardContent>
-                <CardActions style={{justifyContent: 'center'}}>
-                  <Button>+</Button>
-                  <Button>-</Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          </Grid> */}
-          </Box>
-
-          <Box mt={5}>
-            <Grid container justify="center" spacing={3} mt={10}>
-              <Button
-                disabled={stakedBalance.eq(0) || (!canWithdraw && !canClaimReward)}
-                onClick={onRedeem}
-                color="primary"
-                variant="contained"
-              >
-                Claim and Withdraw
-              </Button>
-            </Grid>
-          </Box>
+          <div className="flex justify-center mt-12">
+            <button
+              disabled={stakedBalance.eq(0) || (!canWithdraw && !canClaimReward)}
+              onClick={onRedeem}
+              className={`${
+                stakedBalance.eq(0) || (!canWithdraw && !canClaimReward) ? 'btn-disabled cursor-not-allowed' : 'btn'
+              } flex font-light justify-center items-center lg:px-32`}
+            >
+              <div className="mr-2 flex ">
+                <img src="/internal.svg" width={20} height={20} />
+              </div>
+              Claim and Withdraw
+            </button>
+          </div>
         </>
       ) : (
         <UnlockWallet />
@@ -185,33 +88,5 @@ const Masonry = () => {
     </Page>
   );
 };
-
-const StyledBoardroom = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
-
-const StyledCardsWrapper = styled.div`
-  display: flex;
-  width: 600px;
-  @media (max-width: 768px) {
-    width: 100%;
-    flex-flow: column nowrap;
-    align-items: center;
-  }
-`;
-
-const StyledCardWrapper = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  @media (max-width: 768px) {
-    width: 80%;
-  }
-`;
 
 export default Masonry;

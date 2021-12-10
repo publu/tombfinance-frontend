@@ -1,8 +1,6 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
-import { Box, Button, Card, CardContent, Typography } from '@material-ui/core';
-
 import TokenSymbol from '../../../components/TokenSymbol';
 import Label from '../../../components/Label';
 import Value from '../../../components/Value';
@@ -14,6 +12,10 @@ import useHarvestFromMasonry from '../../../hooks/useHarvestFromMasonry';
 import useEarningsOnMasonry from '../../../hooks/useEarningsOnMasonry';
 import useTombStats from '../../../hooks/useTombStats';
 import { getDisplayBalance } from '../../../utils/formatBalance';
+
+import MasonryItem from '../../../components/MasonryItem';
+
+import Card from '../../../components/Card.js';
 
 const Harvest: React.FC = () => {
   const tombStats = useTombStats();
@@ -31,65 +33,37 @@ const Harvest: React.FC = () => {
   const { from, to } = useClaimRewardTimerMasonry();
 
   return (
-    <Box>
-      <Card>
-        <CardContent>
-          <StyledCardContentInner>
-            <StyledCardHeader>
-              <CardIcon>
-                <TokenSymbol symbol="TOMB" />
-              </CardIcon>
-              <Value value={getDisplayBalance(earnings)} />
-              <Label text={`≈ $${earnedInDollars}`} />
-              <Label text="TOMB Earned" />
-            </StyledCardHeader>
-            <StyledCardActions>
-              <Button
-                onClick={onReward}
-                color="primary"
-                variant="contained"
-                disabled={earnings.eq(0) || !canClaimReward}
-              >
-                Claim Reward
-              </Button>
-            </StyledCardActions>
-          </StyledCardContentInner>
-        </CardContent>
-      </Card>
-      <Box mt={2} style={{ color: '#FFF' }}>
+    <div className="flex flex-col items-center">
+      <Card innerClass="pt-12 pb-6 px-10" className="relative w-full text-center text-3xl mt-4">
+        <div className="flex justify-center absolute w-full left-0 -top-10">
+          <div className="flex justify-center w-20 h-20 rounded-full bg-tombGradient">
+            <TokenSymbol symbol="TOMB" />
+          </div>
+        </div>
+        <div className="font-semibold font-Poppins text-sm text-tomb-purple">TSHARE Staked</div>
+        <div className="font-Amarante mb-1">{getDisplayBalance(earnings)}</div>
+        <div className="flex justify-center font-semibold font-Poppins text-sm gap-x-1">
+          <p className="text-tomb-purple">USD</p>
+          <p> {`≈ $${earnedInDollars}`}</p>
+        </div>
+        <div className="flex justify-center gap-x-2 mt-4">
+          <button
+            onClick={onReward}
+            disabled={earnings.eq(0) || !canClaimReward}
+            className={`btn px-6 ${earnings.eq(0) || !canClaimReward ? 'btn-disabled cursor-not-allowed' : ''}`}
+          >
+            Claim Rewards
+          </button>
+        </div>
         {canClaimReward ? (
           ''
         ) : (
-          <Card>
-            <CardContent>
-              <Typography style={{ textAlign: 'center' }}>Claim possible in</Typography>
-              <ProgressCountdown hideBar={true} base={from} deadline={to} description="Claim available in" />
-            </CardContent>
-          </Card>
+          //@ts-ignore
+          <MasonryItem title="Time left to CLAIM" value={Math.abs(to - from)} />
         )}
-      </Box>
-    </Box>
+      </Card>
+    </div>
   );
 };
-
-const StyledCardHeader = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-`;
-const StyledCardActions = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: ${(props) => props.theme.spacing[6]}px;
-  width: 100%;
-`;
-
-const StyledCardContentInner = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-between;
-`;
 
 export default Harvest;

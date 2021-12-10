@@ -1,8 +1,6 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
-import { Box, Button, Card, CardContent, Typography } from '@material-ui/core';
-
 // import Button from '../../../components/Button';
 // import Card from '../../../components/Card';
 // import CardContent from '../../../components/CardContent';
@@ -29,6 +27,10 @@ import useUnstakeTimerMasonry from '../../../hooks/masonry/useUnstakeTimerMasonr
 import TokenSymbol from '../../../components/TokenSymbol';
 import useStakeToMasonry from '../../../hooks/useStakeToMasonry';
 import useWithdrawFromMasonry from '../../../hooks/useWithdrawFromMasonry';
+
+import MasonryItem from '../../../components/MasonryItem';
+
+import Card from '../../../components/Card.js';
 
 const Stake: React.FC = () => {
   const tombFinance = useTombFinance();
@@ -75,83 +77,46 @@ const Stake: React.FC = () => {
   );
 
   return (
-    <Box>
-      <Card>
-        <CardContent>
-          <StyledCardContentInner>
-            <StyledCardHeader>
-              <CardIcon>
-                <TokenSymbol symbol="TSHARE" />
-              </CardIcon>
-              <Value value={getDisplayBalance(stakedBalance)} />
-              <Label text={`≈ $${tokenPriceInDollars}`} />
-              <Label text={'TSHARE Staked'} />
-            </StyledCardHeader>
-            <StyledCardActions>
-              {approveStatus !== ApprovalState.APPROVED ? (
-                <Button
-                  disabled={approveStatus !== ApprovalState.NOT_APPROVED}
-                  variant="contained"
-                  color="primary"
-                  style={{ marginTop: '20px' }}
-                  onClick={approve}
-                >
-                  Approve TSHARE
-                </Button>
-              ) : (
-                <>
-                  <IconButton disabled={!canWithdrawFromMasonry} onClick={onPresentWithdraw}>
-                    <RemoveIcon />
-                  </IconButton>
-                  <StyledActionSpacer />
-                  <IconButton onClick={onPresentDeposit}>
-                    <AddIcon />
-                  </IconButton>
-                </>
-              )}
-            </StyledCardActions>
-          </StyledCardContentInner>
-        </CardContent>
+    <div className="flex flex-col items-center">
+      <Card className="mt-4 relative w-full text-center text-3xl" innerClass="pt-12 pb-6 px-10 text-center text-3xl">
+        <div className="flex justify-center absolute w-full left-0 -top-10">
+          <div className="flex justify-center w-20 h-20 rounded-full bg-tombGradient">
+            <TokenSymbol symbol="TSHARE" />
+          </div>
+        </div>
+        <div className="font-semibold font-Poppins text-sm text-tomb-purple">TSHARE Staked</div>
+        <div className="font-Amarante mb-1">{getDisplayBalance(stakedBalance)}</div>
+        <div className="flex justify-center font-semibold font-Poppins text-sm gap-x-1">
+          <p className="text-tomb-purple">USD</p>
+          <p> {`≈ $${tokenPriceInDollars}`}</p>
+        </div>
+        <div className="flex justify-center gap-x-2 mt-4">
+          {approveStatus !== ApprovalState.APPROVED ? (
+            <button className="btn" disabled={approveStatus !== ApprovalState.NOT_APPROVED} onClick={approve}>
+              Approve TSHARE
+            </button>
+          ) : (
+            <>
+              <button className="btn px-6" disabled={!canWithdrawFromMasonry} onClick={onPresentWithdraw}>
+                -
+              </button>
+              <button className="btn px-6" onClick={onPresentDeposit}>
+                +
+              </button>
+            </>
+          )}
+        </div>
       </Card>
-      <Box mt={2} style={{ color: '#FFF' }}>
+      <div className="flex">
         {canWithdrawFromMasonry ? (
           ''
         ) : (
-          <Card>
-            <CardContent>
-              <Typography style={{ textAlign: 'center' }}>Withdraw possible in</Typography>
-              <ProgressCountdown hideBar={true} base={from} deadline={to} description="Withdraw available in" />
-            </CardContent>
-          </Card>
+          //@ts-ignore
+          <MasonryItem title="Time left to WITHDRAW" value={Math.abs(to - from)} />
         )}
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
-
-const StyledCardHeader = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-`;
-const StyledCardActions = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 28px;
-  width: 100%;
-`;
-
-const StyledActionSpacer = styled.div`
-  height: ${(props) => props.theme.spacing[4]}px;
-  width: ${(props) => props.theme.spacing[4]}px;
-`;
-
-const StyledCardContentInner = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-between;
-`;
 
 export default Stake;
