@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useWallet } from 'use-wallet';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import Bank from '../Bank';
@@ -56,6 +56,9 @@ const Cemetery = () => {
   const [showLegacy, setShowLegacy] = useState(false);
   const [showTSHARE, setShowTSHARE] = useState(false);
   const [showTomb, setShowTomb] = useState(false);
+  const legacyRef = useRef(null);
+  const TSHARERef = useRef(null);
+  const tombRef = useRef(null);
 
   const showTombData = useBank('TombFtmLPTShareRewardPool');
   const showTSHAREData = useBank('TshareFtmLPTShareRewardPool');
@@ -64,16 +67,19 @@ const Cemetery = () => {
     if (!showLegacy) return;
     setShowTomb(false);
     setShowTSHARE(false);
+    legacyRef.current.scrollIntoView({ behavior: 'smooth' });
   }, [showLegacy]);
   useEffect(() => {
     if (!showTSHARE) return;
     setShowTomb(false);
     setShowLegacy(false);
+    TSHARERef.current.scrollIntoView({ behavior: 'smooth' });
   }, [showTSHARE]);
   useEffect(() => {
     if (!showTomb) return;
     setShowLegacy(false);
     setShowTSHARE(false);
+    tombRef.current.scrollIntoView({ behavior: 'smooth' });
   }, [showTomb]);
 
   return (
@@ -156,20 +162,28 @@ const Cemetery = () => {
                   onClick={() => null}
                 />
               </div>
+              <span ref={legacyRef} />
             </>
           )}
           {showTomb && (
             <>
               <CemetrySection
-                card1={{ icon1: TSHARE, buttonText: 'Claim' }}
-                card2={{ icon1: TOMB, icon2: fantom, buttonText: 'Approve TOMB-FTM-LP' }}
+                card1={{ icon1: TSHARE, buttonText: 'Claim', tokenName: 'TSHARE Earned' }}
+                card2={{
+                  icon1: TOMB,
+                  icon2: fantom,
+                  buttonText: 'Approve TOMB-FTM-LP',
+                  tokenName: 'TOMB-FTM-LP Staked',
+                }}
                 bank={showTombData}
               />
+              <span ref={tombRef} />
             </>
           )}
           {showTSHARE && (
             <>
               <CemetrySection bank={showTSHAREData} />
+              <span ref={TSHARERef} />
             </>
           )}
         </div>

@@ -53,7 +53,6 @@ export default function CemetrySection({ bank, card1, card2 }) {
           coinValue={getDisplayBalance(earnings)}
           dollarValue={`$${showTombData.earnedInDollars}`}
           disabled={earnings.eq(0)}
-          tokenName={`${showTombData.tokenName} Earned`}
           onClick={onTombReward}
         />
         <CemeteryBuyCard
@@ -61,7 +60,6 @@ export default function CemetrySection({ bank, card1, card2 }) {
           coinValue={getDisplayBalance(earnings)}
           dollarValue={`$${showTombData.earnedInDollars}`}
           disabled={earnings.eq(0)}
-          tokenName={`${showTombData.tokenName} Earned`}
           onClick={onTombReward}
         />
       </div>
