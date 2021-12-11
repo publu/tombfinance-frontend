@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Button, Card } from '@material-ui/core';
-
-// import Button from '../../../components/Button';
-// import Card from '../../../components/Card';
 import CardContent from '../../../components/CardContent';
 import useTombFinance from '../../../hooks/useTombFinance';
 import Label from '../../../components/Label';
@@ -17,6 +13,8 @@ import ERC20 from '../../../tomb-finance/ERC20';
 import useTokenBalance from '../../../hooks/useTokenBalance';
 import useApprove, { ApprovalState } from '../../../hooks/useApprove';
 import useCatchError from '../../../hooks/useCatchError';
+import Card from '../../../components/Card.js';
+import Button from '../../../components/Button';
 
 interface ExchangeCardProps {
   action: string;
@@ -28,6 +26,8 @@ interface ExchangeCardProps {
   onExchange: (amount: string) => void;
   disabled?: boolean;
   disabledDescription?: string;
+  icon1: any;
+  icon2: any;
 }
 
 const ExchangeCard: React.FC<ExchangeCardProps> = ({
@@ -40,6 +40,8 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
   onExchange,
   disabled = false,
   disabledDescription,
+  icon1,
+  icon2,
 }) => {
   const catchError = useCatchError();
   const {
@@ -62,106 +64,39 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
     />,
   );
   return (
-    <Card>
-      <CardContent>
-        <StyledCardContentInner>
-          <StyledCardTitle>{`${action} ${toTokenName}`}</StyledCardTitle>
-          <StyledExchanger>
-            <StyledToken>
-              <StyledCardIcon>
-                <TokenSymbol symbol={fromToken.symbol} size={54} />
-              </StyledCardIcon>
-              <Label text={fromTokenName} variant="normal" />
-            </StyledToken>
-            <StyledExchangeArrow>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </StyledExchangeArrow>
-            <StyledToken>
-              <StyledCardIcon>
-                <TokenSymbol symbol={toToken.symbol} size={54} />
-              </StyledCardIcon>
-              <Label text={toTokenName} variant="normal" />
-            </StyledToken>
-          </StyledExchanger>
-          <StyledDesc>{priceDesc}</StyledDesc>
-          <StyledCardActions>
-            {approveStatus !== ApprovalState.APPROVED && !disabled ? (
-              <Button
-                color="primary"
-                variant="contained"
-                disabled={approveStatus === ApprovalState.PENDING || approveStatus === ApprovalState.UNKNOWN}
-                onClick={() => catchError(approve(), `Unable to approve ${fromTokenName}`)}
-              >
-                {`Approve ${fromTokenName}`}
-              </Button>
-            ) : (
-              <Button color="primary" variant="contained" onClick={onPresent} disabled={disabled}>
-                {disabledDescription || action}
-              </Button>
-            )}
-          </StyledCardActions>
-        </StyledCardContentInner>
-      </CardContent>
+    <Card innerClass="pt-12 pb-6 px-10 sm:px-2" className="relative text-center w-full text-3xl mt-4">
+      <div className="flex justify-center absolute w-full left-0 -top-8">
+        <div className="flex justify-center w-16 h-16 rounded-full bg-tombGradient -mr-1">
+          <img src={icon1} width={30} height={30} />
+        </div>
+        <div className="flex justify-center w-16 h-16 rounded-full bg-tombGradient">
+          <img src={icon2} width={30} height={30} />
+        </div>
+      </div>
+      <div className="font-Amarante mb-1">
+        {action} {fromTokenName}
+      </div>
+      <div className="font-semibold font-Poppins text-xs text-tomb-purple">
+        {fromTokenName} to {toTokenName}
+      </div>
+      <div className="font-semibold font-Amarante text-base mt-2 text-white">{priceDesc}</div>
+      {approveStatus !== ApprovalState.APPROVED && !disabled ? (
+        <button
+          className={`mb-2 mt-6 px-10 ${
+            approveStatus === ApprovalState.PENDING || approveStatus === ApprovalState.UNKNOWN ? 'btn-disabled' : 'btn'
+          }`}
+          disabled={approveStatus === ApprovalState.PENDING || approveStatus === ApprovalState.UNKNOWN}
+          onClick={() => catchError(approve(), `Unable to approve ${fromTokenName}`)}
+        >
+          {`Approve ${fromTokenName}`}
+        </button>
+      ) : (
+        <button className="btn-disabled mb-2 mt-6 px-10" onClick={onPresent} disabled={disabled}>
+          {disabledDescription || action}
+        </button>
+      )}
     </Card>
   );
 };
-
-const StyledCardTitle = styled.div`
-  align-items: center;
-  display: flex;
-  font-size: 20px;
-  font-weight: 700;
-  height: 64px;
-  justify-content: center;
-  margin-top: ${(props) => -props.theme.spacing[3]}px;
-`;
-
-const StyledCardIcon = styled.div`
-  background-color: ${(props) => props.theme.color.grey[900]};
-  width: 72px;
-  height: 72px;
-  border-radius: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: ${(props) => props.theme.spacing[2]}px;
-`;
-
-const StyledExchanger = styled.div`
-  align-items: center;
-  display: flex;
-  margin-bottom: ${(props) => props.theme.spacing[5]}px;
-`;
-
-const StyledExchangeArrow = styled.div`
-  font-size: 20px;
-  padding-left: ${(props) => props.theme.spacing[3]}px;
-  padding-right: ${(props) => props.theme.spacing[3]}px;
-  padding-bottom: ${(props) => props.theme.spacing[4]}px;
-`;
-
-const StyledToken = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  font-weight: 600;
-`;
-
-const StyledCardActions = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: ${(props) => props.theme.spacing[3]}px;
-  width: 100%;
-`;
-
-const StyledDesc = styled.span``;
-
-const StyledCardContentInner = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-between;
-`;
 
 export default ExchangeCard;

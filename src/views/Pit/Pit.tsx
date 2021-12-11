@@ -5,10 +5,8 @@ import { createGlobalStyle } from 'styled-components';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { useWallet } from 'use-wallet';
 import UnlockWallet from '../../components/UnlockWallet';
-import PageHeader from '../../components/PageHeader';
 import ExchangeCard from './components/ExchangeCard';
 import styled from 'styled-components';
-import Spacer from '../../components/Spacer';
 import useBondStats from '../../hooks/useBondStats';
 import useTombFinance from '../../hooks/useTombFinance';
 import useCashPriceInLastTWAP from '../../hooks/useCashPriceInLastTWAP';
@@ -18,6 +16,9 @@ import useTokenBalance from '../../hooks/useTokenBalance';
 import useBondsPurchasable from '../../hooks/useBondsPurchasable';
 import { getDisplayBalance } from '../../utils/formatBalance';
 import { BOND_REDEEM_PRICE, BOND_REDEEM_PRICE_BN } from '../../tomb-finance/constants';
+
+import TBOND from '../../assets/img/TBOND.svg';
+import TOMB from '../../assets/img/TOMB.svg';
 
 const BackgroundImage = createGlobalStyle`
   body {
@@ -58,64 +59,61 @@ const Pit: React.FC = () => {
   const isBondPurchasable = useMemo(() => Number(bondStat?.tokenInFtm) < 1.01, [bondStat]);
 
   return (
-    <Switch>
-      <Page>
-        <BackgroundImage />
-        {!!account ? (
-          <>
-            <Route exact path={path}>
-              <PageHeader icon={'🏦'} title="Buy & Redeem Bonds" subtitle="Earn premiums upon redemption" />
-            </Route>
-            <StyledBond>
-              <StyledCardWrapper>
-                <ExchangeCard
-                  action="Purchase"
-                  fromToken={tombFinance.TOMB}
-                  fromTokenName="TOMB"
-                  toToken={tombFinance.TBOND}
-                  toTokenName="TBOND"
-                  priceDesc={
-                    !isBondPurchasable
-                      ? 'TOMB is over peg'
-                      : getDisplayBalance(bondsPurchasable, 18, 4) + ' TBOND available for purchase'
-                  }
-                  onExchange={handleBuyBonds}
-                  disabled={!bondStat || isBondRedeemable}
-                />
-              </StyledCardWrapper>
-              <StyledStatsWrapper>
-                <ExchangeStat
-                  tokenName="TOMB"
-                  description="Last-Hour TWAP Price"
-                  price={getDisplayBalance(cashPrice, 18, 4)}
-                />
-                <Spacer size="md" />
-                <ExchangeStat
-                  tokenName="TBOND"
-                  description="Current Price: (TOMB)^2"
-                  price={Number(bondStat?.tokenInFtm).toFixed(2) || '-'}
-                />
-              </StyledStatsWrapper>
-              <StyledCardWrapper>
-                <ExchangeCard
-                  action="Redeem"
-                  fromToken={tombFinance.TBOND}
-                  fromTokenName="TBOND"
-                  toToken={tombFinance.TOMB}
-                  toTokenName="TOMB"
-                  priceDesc={`${getDisplayBalance(bondBalance)} TBOND Available in wallet`}
-                  onExchange={handleRedeemBonds}
-                  disabled={!bondStat || bondBalance.eq(0) || !isBondRedeemable}
-                  disabledDescription={!isBondRedeemable ? `Enabled when TOMB > ${BOND_REDEEM_PRICE}FTM` : null}
-                />
-              </StyledCardWrapper>
-            </StyledBond>
-          </>
-        ) : (
-          <UnlockWallet />
-        )}
-      </Page>
-    </Switch>
+    <Page>
+      {!!account ? (
+        <>
+          <div className="flex flex-col mx-auto sm:mr-8 items-center mt-10 mb-10">
+            <span className="text-5xl font-Amarante tracking-tighter">Pit</span>
+          </div>
+          <div className="grid md:grid-cols-2 md:gap-x-4 w-10/12 md:w-3/4 mx-auto">
+            <ExchangeStat
+              tokenName="TOMB"
+              description="Last-Hour TWAP Price"
+              price={getDisplayBalance(cashPrice, 18, 4)}
+            />
+            <ExchangeStat
+              tokenName="TBOND"
+              description="Current Price:"
+              price={Number(bondStat?.tokenInFtm).toFixed(2) || '-'}
+            />
+          </div>
+          <div className="grid md:grid-cols-2 w-10/12 lg:w-3/4 mx-auto mt-10 gap-x-10 gap-y-8">
+            <ExchangeCard
+              action="Purchase"
+              fromToken={tombFinance.TOMB}
+              fromTokenName="TOMB"
+              toToken={tombFinance.TBOND}
+              toTokenName="TBOND"
+              priceDesc={
+                !isBondPurchasable
+                  ? 'TOMB is over peg'
+                  : getDisplayBalance(bondsPurchasable, 18, 4) + ' TBOND available for purchase'
+              }
+              onExchange={handleBuyBonds}
+              disabled={!bondStat || isBondRedeemable}
+              icon1={TOMB}
+              icon2={TBOND}
+            />
+
+            <ExchangeCard
+              action="Redeem"
+              fromToken={tombFinance.TBOND}
+              fromTokenName="TBOND"
+              toToken={tombFinance.TOMB}
+              toTokenName="TOMB"
+              priceDesc={`${getDisplayBalance(bondBalance)} TBOND Available in wallet`}
+              onExchange={handleRedeemBonds}
+              disabled={!bondStat || bondBalance.eq(0) || !isBondRedeemable}
+              disabledDescription={!isBondRedeemable ? `Enabled when TOMB > ${BOND_REDEEM_PRICE}FTM` : null}
+              icon1={TBOND}
+              icon2={TOMB}
+            />
+          </div>
+        </>
+      ) : (
+        <UnlockWallet />
+      )}
+    </Page>
   );
 };
 

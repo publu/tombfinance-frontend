@@ -155,7 +155,7 @@ const Home = () => {
           <Copy />
           <div className="grid grid-cols-3 mx-auto mt-4 gap-x-5 mb-32">
             <button className="btn text-xs font-bold tracking-widest">ZAP!</button>
-            <Link className="btn text-xs font-bold tracking-widest" to="/cemetary">
+            <Link className="btn text-xs font-bold tracking-widest" to="/cemetery">
               FARM!
             </Link>
             <Link className="btn text-xs font-bold tracking-widest" to="/masonry">
