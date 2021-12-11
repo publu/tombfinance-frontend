@@ -26,7 +26,6 @@ import fantom from '../../assets/img/fantom.svg';
 import danger from '../../assets/img/danger.svg';
 import boo from '../../assets/img/boo.svg';
 import linkImg from '../../assets/img/link.svg';
-import CemeteryBuyCard from '../../components/CemeteryBuyCard';
 import useTombStats from '../../hooks/useTombStats';
 import useShareStats from '../../hooks/usetShareStats';
 import { getDisplayBalance } from '../../utils/formatBalance';
@@ -168,17 +167,19 @@ const Cemetery = () => {
           {showTomb && (
             <>
               <CemeterySection
-                card1={{ icon1: TSHARE, buttonText: 'Claim', tokenName: 'TSHARE Earned' }}
+                card1={{ icon1: TSHARE, button1Text: 'Claim', tokenName: 'TSHARE Earned' }}
                 card2={{
                   icon1: TOMB,
                   icon2: fantom,
-                  buttonText: 'Approve TOMB-FTM-LP',
+                  button1Text: 'Approve TOMB-FTM-LP',
                   tokenName: 'TOMB-FTM-LP Staked',
                 }}
                 card3={{
                   icon1: TOMB,
                   icon2: fantom,
-                  buttonText: 'Stake TOMB-FTM-LP',
+                  button1Text: '-',
+                  button2Text: 'Zap',
+                  button3Text: '+',
                   tokenName: 'TOMB-FTM-LP Staked',
                 }}
                 bank={showTombData}
@@ -188,7 +189,24 @@ const Cemetery = () => {
           )}
           {showTSHARE && (
             <>
-              <CemeterySection bank={showTSHAREData} />
+              <CemeterySection
+                card1={{ icon1: TSHARE, button1Text: 'Claim', tokenName: 'TSHARE Earned' }}
+                card2={{
+                  icon1: TSHARE,
+                  icon2: fantom,
+                  button1Text: 'Approve TSHARE-FTM-LP',
+                  tokenName: 'TSHARE-FTM-LP Staked',
+                }}
+                card3={{
+                  icon1: TSHARE,
+                  icon2: fantom,
+                  button1Text: '-',
+                  button2Text: 'Zap',
+                  button3Text: '+',
+                  tokenName: 'TSHARE-FTM-LP Staked',
+                }}
+                bank={showTSHAREData}
+              />
               <span ref={TSHARERef} />
             </>
           )}

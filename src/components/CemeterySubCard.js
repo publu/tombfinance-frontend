@@ -1,16 +1,19 @@
 import Card from './Card';
 
-export default function CemeteryStakedCard({
+export default function CemeteryBuyCard({
   coinValue,
   dollarValue,
   tokenName,
-  buttonText,
+  button1Text,
+  button2Text,
+  button3Text,
   disabled,
-  onClick,
+  onClick1,
+  onClick2,
+  onClick3,
   icon1,
   icon2,
 }) {
-  console.log(disabled);
   return (
     <Card innerClass="pt-12 pb-6 px-10 sm:px-2" className="relative text-center w-full text-3xl mt-4">
       <div className="flex justify-center absolute w-full left-0 -top-8">
@@ -24,13 +27,23 @@ export default function CemeteryStakedCard({
         )}
       </div>
       <div className="font-semibold font-Poppins text-xs text-tomb-purple">{tokenName}</div>
-      <div className="font-Amarante mb-1 mt-1">{parseFloat(coinValue)}</div>
+      <div className="font-Amarante mb-1 mt-1">{coinValue}</div>
       <div className="font-semibold font-Amarante text-base text-tomb-purple">
         USD <span className="text-white">{dollarValue}</span>
       </div>
-      <button onClick={() => onClick()} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
-        {buttonText}
+      <button onClick={() => onClick1()} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
+        {button1Text}
       </button>
+      {onClick2 && (
+        <button onClick={() => onClick2()} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
+          {button2Text}
+        </button>
+      )}
+      {onClick3 && (
+        <button onClick={() => onClick3()} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
+          {button3Text}
+        </button>
+      )}
     </Card>
   );
 }

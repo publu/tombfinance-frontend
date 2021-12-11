@@ -153,8 +153,7 @@ const Home = () => {
             <div className="home-grave" />
           </div>
           <Copy />
-          <div className="grid grid-cols-3 mx-auto mt-4 gap-x-5 mb-32">
-            <button className="btn text-xs font-bold tracking-widest">ZAP!</button>
+          <div className="grid grid-cols-2 mx-auto mt-4 gap-x-5 mb-32">
             <Link className="btn text-xs font-bold tracking-widest" to="/cemetery">
               FARM!
             </Link>

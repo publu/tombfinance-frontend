@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
-import CemeteryBuyCard from './CemeteryBuyCard';
-import CemeteryStakedCard from './CemeteryStakedCard';
+import CemeterySubCard from './CemeterySubCard';
 import useTombStats from '../hooks/useTombStats';
 import useShareStats from '../hooks/usetShareStats';
 import { getDisplayBalance } from '../utils/formatBalance';
@@ -109,13 +108,13 @@ export default function CemetrySection({ bank, card1, card2, card3 }) {
           value={`${(showTombData.bank.closedForStaking ? '0.00' : showTombData.statsOnPool?.yearlyAPR) || '--.--'}%`}
         />
         <MasonryItem
-          title="Daily APRt"
+          title="Daily APR"
           value={`${(showTombData.bank.closedForStaking ? '0.00' : showTombData.statsOnPool?.dailyAPR) || '--.--'}%`}
         />
         <MasonryItem title="TVL" value={`$${showTombData.statsOnPool?.TVL || '--.--'}`} />
       </div>
       <div className="grid md:grid-cols-2 md:w-3/4 mx-auto mt-20 gap-x-6">
-        <CemeteryBuyCard
+        <CemeterySubCard
           {...card1}
           coinValue={getDisplayBalance(earnings)}
           dollarValue={`$${showTombData.earnedInDollars}`}
@@ -124,7 +123,7 @@ export default function CemetrySection({ bank, card1, card2, card3 }) {
         />
 
         {approveStatus !== ApprovalState.APPROVED ? (
-          <CemeteryBuyCard
+          <CemeterySubCard
             {...card2}
             coinValue={getDisplayBalance(stakedBalance, bank.depositToken.decimal)}
             dollarValue={`$${showTombData.stakedInDollars}`}
@@ -132,12 +131,14 @@ export default function CemetrySection({ bank, card1, card2, card3 }) {
             onClick={approve}
           />
         ) : (
-          <CemeteryStakedCard
+          <CemeterySubCard
             {...card3}
             coinValue={getDisplayBalance(stakedBalance, bank.depositToken.decimal)}
             dollarValue={`$${showTombData.stakedInDollars}`}
             disabled={false}
-            onClick={onPresentDeposit}
+            onClick1={onPresentWithdraw}
+            onClick2={onPresentZap}
+            onClick3={onPresentDeposit}
           />
         )}
       </div>
