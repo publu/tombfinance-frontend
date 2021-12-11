@@ -27,7 +27,7 @@ export default function CemeteryBuyCard({
       <div className="font-semibold font-Amarante text-base text-tomb-purple">
         USD <span className="text-white">{dollarValue}</span>
       </div>
-      <button onClick={() => onClick} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
+      <button onClick={() => onClick()} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
         {buttonText}
       </button>
     </Card>

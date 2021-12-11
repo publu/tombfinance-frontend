@@ -33,7 +33,7 @@ import { getDisplayBalance } from '../../utils/formatBalance';
 import useEarnings from '../../hooks/useEarnings';
 import useHarvest from '../../hooks/useHarvest';
 import useRedeem from '../../hooks/useRedeem';
-import CemetrySection from '../../components/CemetrySection';
+import CemeterySection from '../../components/CemeterySection';
 
 import TSHARE from '../../assets/img/TSHARE.svg';
 import TBOND from '../../assets/img/TBOND.svg';
@@ -167,12 +167,18 @@ const Cemetery = () => {
           )}
           {showTomb && (
             <>
-              <CemetrySection
+              <CemeterySection
                 card1={{ icon1: TSHARE, buttonText: 'Claim', tokenName: 'TSHARE Earned' }}
                 card2={{
                   icon1: TOMB,
                   icon2: fantom,
                   buttonText: 'Approve TOMB-FTM-LP',
+                  tokenName: 'TOMB-FTM-LP Staked',
+                }}
+                card3={{
+                  icon1: TOMB,
+                  icon2: fantom,
+                  buttonText: 'Stake TOMB-FTM-LP',
                   tokenName: 'TOMB-FTM-LP Staked',
                 }}
                 bank={showTombData}
@@ -182,7 +188,7 @@ const Cemetery = () => {
           )}
           {showTSHARE && (
             <>
-              <CemetrySection bank={showTSHAREData} />
+              <CemeterySection bank={showTSHAREData} />
               <span ref={TSHARERef} />
             </>
           )}

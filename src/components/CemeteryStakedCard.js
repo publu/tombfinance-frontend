@@ -1,6 +1,6 @@
 import Card from './Card';
 
-export default function CemeteryBuyCard({
+export default function CemeteryStakedCard({
   coinValue,
   dollarValue,
   tokenName,
@@ -24,11 +24,11 @@ export default function CemeteryBuyCard({
         )}
       </div>
       <div className="font-semibold font-Poppins text-xs text-tomb-purple">{tokenName}</div>
-      <div className="font-Amarante mb-1 mt-1">{coinValue}</div>
+      <div className="font-Amarante mb-1 mt-1">{parseFloat(coinValue)}</div>
       <div className="font-semibold font-Amarante text-base text-tomb-purple">
         USD <span className="text-white">{dollarValue}</span>
       </div>
-      <button onClick={() => onClick} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
+      <button onClick={() => onClick()} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
         {buttonText}
       </button>
     </Card>
