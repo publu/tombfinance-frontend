@@ -19,12 +19,12 @@ import Regulations from './views/Regulations/Regulations';
 import { RefreshContextProvider } from './contexts/RefreshContext';
 import Nav from './components/Nav';
 
-const Home = lazy(() => import('./views/Home'));
-const Cemetery = lazy(() => import('./views/Cemetery'));
-const Masonry = lazy(() => import('./views/Masonry'));
-const Pit = lazy(() => import('./views/Pit'));
-const SBS = lazy(() => import('./views/Sbs'));
-const Liquidity = lazy(() => import('./views/Liquidity'));
+import Home from './views/Home';
+import Cemetery from './views/Cemetery';
+import Masonry from './views/Masonry';
+import Pit from './views/Pit';
+import SBS from './views/Sbs';
+import Liquidity from './views/Liquidity';
 
 const NoMatch = () => (
   <h3 style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
@@ -54,34 +54,32 @@ const App: React.FC = (props) => {
           {!isHome && <div className={`background-home sky`} />}
           {!isHome && <div className={`background cemetry`} />}
           <Nav />
-          <Suspense fallback={<Loader />}>
-            <Switch>
-              <Route exact path="/">
-                <Home setIsHome={setIsHome} />
-              </Route>
-              <Route path="/cemetery">
-                <Cemetery />
-              </Route>
-              <Route path="/masonry">
-                <Masonry />
-              </Route>
-              <Route path="/pit">
-                <Pit />
-              </Route>
-              <Route path="/sbs">
-                <SBS />
-              </Route>
-              <Route path="/regulations">
-                <Regulations />
-              </Route>
-              <Route path="/liquidity">
-                <Liquidity />
-              </Route>
-              <Route path="*">
-                <NoMatch />
-              </Route>
-            </Switch>
-          </Suspense>
+          <Switch>
+            <Route exact path="/">
+              <Home setIsHome={setIsHome} />
+            </Route>
+            <Route path="/cemetery">
+              <Cemetery />
+            </Route>
+            <Route path="/masonry">
+              <Masonry />
+            </Route>
+            <Route path="/pit">
+              <Pit />
+            </Route>
+            <Route path="/sbs">
+              <SBS />
+            </Route>
+            <Route path="/regulations">
+              <Regulations />
+            </Route>
+            <Route path="/liquidity">
+              <Liquidity />
+            </Route>
+            <Route path="*">
+              <NoMatch />
+            </Route>
+          </Switch>
         </div>
       </Router>
     </Providers>
@@ -98,7 +96,7 @@ const Providers: React.FC = ({ children }) => {
             walletconnect: { rpcUrl: config.defaultProvider },
             walletlink: {
               url: config.defaultProvider,
-              appName: 'Tomb Finance',
+              appName: 'Tomb Finance - Betas',
               appLogoUrl: 'https://github.com/tombfinance/tombfinance-assets/blob/master/logo_tomb_NoBG.png',
             },
           }}
