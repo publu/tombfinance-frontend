@@ -22,15 +22,7 @@ const Label: React.FC<LabelProps> = ({ text, variant = 'secondary', color: custo
       labelColor = '#ffffff'; //color.grey[300];
     }
   }
-  return <StyledLabel color={labelColor}>{text}</StyledLabel>;
+  return <p className="font-Poppins mt-1 text-sm">{text}</p>;
 };
-
-interface StyledLabelProps {
-  color: string;
-}
-
-const StyledLabel = styled.div<StyledLabelProps>`
-  color: ${(props) => props.color};
-`;
 
 export default Label;

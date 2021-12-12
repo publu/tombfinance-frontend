@@ -1,21 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 
 interface ModalTitleProps {
   text?: string;
 }
 
-const ModalTitle: React.FC<ModalTitleProps> = ({ text }) => <StyledModalTitle>{text}</StyledModalTitle>;
-
-const StyledModalTitle = styled.div`
-  align-items: center;
-  //color: ${(props) => props.theme.color.grey[300]};
-  display: flex;
-  font-size: 18px;
-  font-weight: 700;
-  height: ${(props) => props.theme.topBarSize}px;
-  justify-content: center;
-  margin-top: ${(props) => -props.theme.spacing[4]}px;
-`;
+const ModalTitle: React.FC<ModalTitleProps> = ({ text }) => (
+  <h1 className="font-Amarante text-2xl mb-4 font-bold text-center">{text}</h1>
+);
 
 export default ModalTitle;

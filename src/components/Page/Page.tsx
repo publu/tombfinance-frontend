@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from '@material-ui/core';
 import useEagerConnect from '../../hooks/useEagerConnect';
 
 import Footer from '../Footer';
@@ -9,10 +8,7 @@ const Page: React.FC = ({ children }) => {
   useEagerConnect();
   return (
     <div className="flex flex-col justify-between">
-      <div className="content-wrapper">
-        <Nav />
-        {children}
-      </div>
+      <div className="content-wrapper">{children}</div>
       <Footer />
     </div>
   );

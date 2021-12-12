@@ -19,6 +19,8 @@ import { BOND_REDEEM_PRICE, BOND_REDEEM_PRICE_BN } from '../../tomb-finance/cons
 
 import TBOND from '../../assets/img/TBOND.svg';
 import TOMB from '../../assets/img/TOMB.svg';
+import ExchangeModal from './components/ExchangeModal';
+import { BigNumber } from 'ethers';
 
 const BackgroundImage = createGlobalStyle`
   body {
@@ -60,6 +62,8 @@ const Pit: React.FC = () => {
 
   return (
     <Page>
+      {/* @ts-ignore */}
+      <ExchangeModal max={'2524BA'} title="test" description="description" action="test" tokenName="TBOND" />
       {!!account ? (
         <>
           <div className="flex flex-col mx-auto sm:mr-8 items-center mt-10 mb-10">

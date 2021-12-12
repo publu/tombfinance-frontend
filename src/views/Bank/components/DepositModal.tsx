@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
-import { Button } from '@material-ui/core';
-// import Button from '../../../components/Button'
+import Button from '../../../components/Button';
 import Modal, { ModalProps } from '../../../components/Modal';
 import ModalActions from '../../../components/ModalActions';
 import ModalTitle from '../../../components/ModalTitle';
@@ -47,9 +46,7 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, decimals, onConfirm, o
       />
       <ModalActions>
         {/* <Button color="secondary" variant="outlined" onClick={onDismiss}>Cancel</Button> */}
-        <Button color="primary" variant="contained" onClick={() => onConfirm(val)}>
-          Confirm
-        </Button>
+        <Button onClick={() => onConfirm(val)}>Confirm</Button>
       </ModalActions>
     </Modal>
   );

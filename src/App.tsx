@@ -17,6 +17,7 @@ import Loader from './components/Loader';
 import Popups from './components/Popups';
 import Regulations from './views/Regulations/Regulations';
 import { RefreshContextProvider } from './contexts/RefreshContext';
+import Nav from './components/Nav';
 
 const Home = lazy(() => import('./views/Home'));
 const Cemetery = lazy(() => import('./views/Cemetery'));
@@ -31,7 +32,7 @@ const NoMatch = () => (
   </h3>
 );
 
-const App: React.FC = () => {
+const App: React.FC = (props) => {
   // Clear localStorage for mobile users
   if (typeof localStorage.version_app === 'undefined' || localStorage.version_app !== '1.1') {
     localStorage.clear();
@@ -39,6 +40,7 @@ const App: React.FC = () => {
     localStorage.setItem('version_app', '1.1');
   }
 
+  const path = window.location.pathname;
   usePromptNetwork();
 
   return (
@@ -46,6 +48,9 @@ const App: React.FC = () => {
       <Router>
         <div className="relative overflow-hidden">
           <div className={`background bg-bgColor`} />
+
+          {path === '/' && <div className={`background-home home-sky`} />}
+          <Nav />
           <Suspense fallback={<Loader />}>
             <Switch>
               <Route exact path="/">

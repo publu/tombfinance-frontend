@@ -116,7 +116,6 @@ const Home = () => {
 
   return (
     <>
-      <div className={`background-home home-sky`} />
       <Page>
         <div className="flex flex-col">
           <Tvl TVL={TVL} />

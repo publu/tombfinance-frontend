@@ -70,6 +70,7 @@ export default function Nav() {
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4 lg:space-x-10 tracking-wide">
                     {navigation.map((item) => {
+                      console.log(item);
                       return (
                         <div
                           className={`
@@ -77,9 +78,9 @@ export default function Nav() {
                             
                           `}
                         >
-                          {item.href == '/docs' ? (
+                          {item.href === 'https://docs.tomb.finance/ ' ? (
                             <a href="https://docs.tomb.finance/" target="_blank" rel="noopener noreferrer">
-                              <span className="text-xs font-semibold cursor-pointer">{item.name}</span>
+                              <span className="text-xs   font-semibold cursor-pointer">{item.name}</span>
                             </a>
                           ) : (
                             <Link key={item.name} to={item.href} aria-current={item.current ? 'page' : undefined}>

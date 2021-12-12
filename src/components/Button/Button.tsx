@@ -12,70 +12,14 @@ interface ButtonProps {
   text?: string;
   to?: string;
   variant?: 'default' | 'secondary' | 'tertiary';
+  className?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, disabled, href, onClick, size, text, to, variant }) => {
-  const { color, spacing } = useContext(ThemeContext);
-
-  let buttonColor: string;
-  switch (variant) {
-    case 'secondary':
-      buttonColor = color.teal[200];
-      break;
-    case 'default':
-    default:
-      buttonColor = color.primary.main;
-  }
-
-  let boxShadow: string;
-  let buttonSize: number;
-  let buttonPadding: number;
-  let fontSize: number;
-  switch (size) {
-    case 'sm':
-      buttonPadding = spacing[3];
-      buttonSize = 36;
-      fontSize = 14;
-      break;
-    case 'lg':
-      buttonPadding = spacing[4];
-      buttonSize = 72;
-      fontSize = 16;
-      break;
-    case 'md':
-    default:
-      buttonPadding = spacing[4];
-      buttonSize = 56;
-      fontSize = 16;
-  }
-
-  const ButtonChild = useMemo(() => {
-    if (to) {
-      return <StyledLink to={to}>{text}</StyledLink>;
-    } else if (href) {
-      return (
-        <StyledExternalLink href={href} target="__blank">
-          {text}
-        </StyledExternalLink>
-      );
-    } else {
-      return text;
-    }
-  }, [href, text, to]);
-
+const Button: React.FC<ButtonProps> = ({ children, className, disabled, href, onClick, size, text, to, variant }) => {
   return (
-    <StyledButton
-      boxShadow={boxShadow}
-      color={buttonColor}
-      disabled={disabled}
-      fontSize={fontSize}
-      onClick={onClick}
-      padding={buttonPadding}
-      size={buttonSize}
-    >
-      {children}
-      {ButtonChild}
-    </StyledButton>
+    <button className={`btn ${className}`} onClick={onClick}>
+      {text || children}
+    </button>
   );
 };
 
