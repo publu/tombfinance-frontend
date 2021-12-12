@@ -79,56 +79,58 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
 
   return (
     <Modal>
-      <ModalTitle text={`Zap in ${tokenName}`} />
-      <Typography variant="h6" align="center">
-        Powered by{' '}
-        <a target="_blank" rel="noopener noreferrer" href="https://mlnl.finance">
-          mlnl.finance
-        </a>
-      </Typography>
+      <div className="font-Poppins">
+        <ModalTitle text={`Zap in ${tokenName}`} />
+        <Typography variant="h6" align="center">
+          Powered by{' '}
+          <a target="_blank" rel="noopener noreferrer" href="https://mlnl.finance">
+            mlnl.finance
+          </a>
+        </Typography>
 
-      <StyledActionSpacer />
-      <InputLabel style={{ color: '#fff' }} id="label">
-        Select asset to zap with
-      </InputLabel>
-      <Select onChange={handleChangeAsset} style={{ color: '#fff' }} labelId="label" id="select" value={zappingToken}>
-        <StyledMenuItem value={FTM_TICKER}>FTM</StyledMenuItem>
-        <StyledMenuItem value={TSHARE_TICKER}>TSHARE</StyledMenuItem>
-        {/* Tomb as an input for zapping will be disabled due to issues occuring with the Gatekeeper system */}
-        {/* <StyledMenuItem value={TOMB_TICKER}>TOMB</StyledMenuItem> */}
-      </Select>
-      <TokenInput
-        onSelectMax={handleSelectMax}
-        onChange={handleChange}
-        value={val}
-        max={zappingTokenBalance}
-        symbol={zappingToken}
-      />
-      <Label text="Zap Estimations" />
-      <StyledDescriptionText>
-        {' '}
-        {tokenName}: {Number(estimate.token0) / Number(ftmAmountPerLP)}
-      </StyledDescriptionText>
-      <StyledDescriptionText>
-        {' '}
-        ({Number(estimate.token0)} {FTM_TICKER} / {Number(estimate.token1)}{' '}
-        {tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}){' '}
-      </StyledDescriptionText>
-      <ModalActions>
-        <button
-          className="btn"
-          onClick={() =>
-            approveZapperStatus !== ApprovalState.APPROVED ? approveZapper() : onConfirm(zappingToken, tokenName, val)
-          }
-        >
-          {approveZapperStatus !== ApprovalState.APPROVED ? 'Approve' : "Let's go"}
-        </button>
-      </ModalActions>
+        <StyledActionSpacer />
+        <InputLabel style={{ color: '#fff' }} id="label">
+          Select asset to zap with
+        </InputLabel>
+        <Select onChange={handleChangeAsset} style={{ color: '#fff' }} labelId="label" id="select" value={zappingToken}>
+          <StyledMenuItem value={FTM_TICKER}>FTM</StyledMenuItem>
+          <StyledMenuItem value={TSHARE_TICKER}>TSHARE</StyledMenuItem>
+          {/* Tomb as an input for zapping will be disabled due to issues occuring with the Gatekeeper system */}
+          {/* <StyledMenuItem value={TOMB_TICKER}>TOMB</StyledMenuItem> */}
+        </Select>
+        <TokenInput
+          onSelectMax={handleSelectMax}
+          onChange={handleChange}
+          value={val}
+          max={zappingTokenBalance}
+          symbol={zappingToken}
+        />
+        <p className="font-Poppins">"Zap Estimations</p>
+        <StyledDescriptionText>
+          {' '}
+          {tokenName}: {Number(estimate.token0) / Number(ftmAmountPerLP)}
+        </StyledDescriptionText>
+        <StyledDescriptionText>
+          {' '}
+          ({Number(estimate.token0)} {FTM_TICKER} / {Number(estimate.token1)}{' '}
+          {tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}){' '}
+        </StyledDescriptionText>
+        <ModalActions>
+          <button
+            className="btn"
+            onClick={() =>
+              approveZapperStatus !== ApprovalState.APPROVED ? approveZapper() : onConfirm(zappingToken, tokenName, val)
+            }
+          >
+            {approveZapperStatus !== ApprovalState.APPROVED ? 'Approve' : "Let's go"}
+          </button>
+        </ModalActions>
 
-      <StyledActionSpacer />
-      <Alert variant="filled" severity="warning">
-        Beta feature. Use at your own risk!
-      </Alert>
+        <StyledActionSpacer />
+        <Alert variant="filled" severity="warning">
+          Beta feature. Use at your own risk!
+        </Alert>
+      </div>
     </Modal>
   );
 };
