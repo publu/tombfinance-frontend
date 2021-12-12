@@ -26,7 +26,7 @@
 
 .background-home {
   position: absolute;
-  height: 2000px;
+  height: 100%;
   width: 100vw;
   z-index: -1000;
 }
@@ -56,7 +56,8 @@
 .home-sky {
   background: url(assets/img/home-sky.svg);
   background-repeat: no-repeat;
-  background-size: 100vw;
+  background-size: cover;
+  height: 1000px;
 }
 
 @layer base {
