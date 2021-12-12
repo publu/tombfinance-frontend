@@ -83,7 +83,7 @@ export default function Nav() {
                             </a>
                           ) : (
                             <Link key={item.name} to={item.href} aria-current={item.current ? 'page' : undefined}>
-                              <span className="text-xs font-semibold cursor-pointer">{item.name} d</span>
+                              <span className="text-xs font-semibold cursor-pointer">{item.name}</span>
                             </Link>
                           )}
                         </div>
