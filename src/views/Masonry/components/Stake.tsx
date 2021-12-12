@@ -97,7 +97,11 @@ const Stake: React.FC = () => {
             </button>
           ) : (
             <>
-              <button className="btn px-6" disabled={!canWithdrawFromMasonry} onClick={onPresentWithdraw}>
+              <button
+                className={`btn px-6 ${!canWithdrawFromMasonry ? 'btn-disabled cursor-not-allowed' : ''}`}
+                disabled={!canWithdrawFromMasonry}
+                onClick={onPresentWithdraw}
+              >
                 -
               </button>
               <button className="btn px-6" onClick={onPresentDeposit}>
@@ -107,12 +111,12 @@ const Stake: React.FC = () => {
           )}
         </div>
       </Card>
-      <div className="flex">
+      <div className="flex mt-4">
         {canWithdrawFromMasonry ? (
           ''
         ) : (
           //@ts-ignore
-          <MasonryItem title="Time left to WITHDRAW" value={Math.abs(to - from)} />
+          <MasonryItem title="" value="" time={true} from={from} to={to} description="Withdraw possible in" />
         )}
       </div>
     </div>

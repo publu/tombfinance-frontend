@@ -5,7 +5,7 @@ import discord from '../../assets/img/discord.svg';
 
 function Footer() {
   return (
-    <div className="hidden sm:flex mx-auto text-center items-center">
+    <div className="hidden sm:flex mx-auto text-center items-center mt-20">
       <span className="font-Amarante text-xl mr-8 mb-1">Tomb Finance</span>
       <img src={tomb} width={20} height={20} />
       <span className="text-xs tracking-tight text-gray-100">Copyright © Tomb Finance 2021</span>

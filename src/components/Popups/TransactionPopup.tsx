@@ -27,6 +27,7 @@ export default function TransactionPopup({
       </div>
       <div>
         <StyledPopupDesc>{summary ?? 'Hash: ' + hash.slice(0, 8) + '...' + hash.slice(58, 65)}</StyledPopupDesc>
+        <br />
         {chainId && (
           <StyledLink target="_blank" href={`${config.ftmscanUrl}/tx/${hash}`}>
             View on Ftmscan
@@ -39,9 +40,9 @@ export default function TransactionPopup({
 
 const StyledPopupDesc = styled.span`
   font-weight: 500;
-  color: ${(props) => props.theme.color.grey[300]};
+  color: ${(props) => props.theme.color.purple[300]};
 `;
 
 const StyledLink = styled.a`
-  color: ${(props) => props.theme.color.grey[500]};
+  color: ${(props) => props.theme.color.purple[500]};
 `;

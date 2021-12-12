@@ -55,13 +55,15 @@ const Harvest: React.FC = () => {
             Claim Rewards
           </button>
         </div>
+      </Card>
+      <div className="flex">
         {canClaimReward ? (
           ''
         ) : (
           //@ts-ignore
-          <MasonryItem title="Time left to CLAIM" value={Math.abs(to - from)} />
+          <MasonryItem title="" value="" time={true} from={from} to={to} description="Claim reward in" />
         )}
-      </Card>
+      </div>
     </div>
   );
 };

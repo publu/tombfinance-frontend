@@ -119,7 +119,7 @@ const Cemetery = () => {
             View Legacy Pools
           </button>
         </div>
-        <div className="mt-24">
+        <div className="mt-12">
           {showLegacy && (
             <>
               <div className="w-9/12 md:w-1/2 mx-auto mt-12">

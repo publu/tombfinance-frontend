@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Card } from '@material-ui/core';
-import MasonryItem from '../../../components/MasonryItem';
+import PitItem from '../../../components/PitItem';
 
 interface ExchangeStatProps {
   tokenName: string;
@@ -18,7 +18,7 @@ const ExchangeStat: React.FC<ExchangeStatProps> = ({ tokenName, description, pri
     //     <StyledDesc>{description}</StyledDesc>
     //   </StyledCardContentInner>
     // </Card>
-    <MasonryItem title={description} value={`💰 ${tokenName} = ${price} FTM`} />
+    <PitItem title={description} value={`💰 ${tokenName} = ${price} FTM`} />
   );
 };
 

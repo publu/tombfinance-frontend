@@ -29,7 +29,7 @@ const ProgressCountdown: React.FC<ProgressCountdownProps> = ({ base, deadline, h
   };
   return (
     <Card className="mt-4" innerClass="p-2 md:p-4 text-center text-3xl">
-      <h2 className="text-sm">Next Epoch</h2>
+      <h2 className="text-sm">{description}</h2>
       <Countdown key={new Date().getTime()} date={deadline} renderer={countdownRenderer} />
     </Card>
   );

@@ -59,7 +59,7 @@ const Masonry = () => {
             <ProgressCountdown base={moment().toDate()} hideBar={true} deadline={to} description="Next Epoch" />
             <MasonryItem title={'Current Epoch'} value={Number(currentEpoch)} />
             <MasonryItem title={'TWAP'} value={scalingFactor} />
-            <MasonryItem title={'TSHARES Staked'} value={getDisplayBalance(totalStaked)} />
+            <MasonryItem title={'TSHARE Staked'} value={getDisplayBalance(totalStaked)} />
           </div>
 
           <div className="grid lg:grid-cols-2 mx-auto w-9/12 lg:w-1/2 mt-16 gap-x-4 gap-y-10">
