@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Page from '../../components/Page';
 import HomeImage from '../../assets/img/home.png';
@@ -30,7 +30,7 @@ import Tvl from '../../components/Tvl';
 import TokenStatsCard from '../../components/TokenStatsCard';
 import Copy from '../../components/Copy';
 
-const Home = () => {
+const Home = ({ setIsHome }) => {
   const TVL = useTotalValueLocked();
   const tombFtmLpStats = useLpStats('TOMB-FTM-LP');
   const tShareFtmLpStats = useLpStats('TSHARE-FTM-LP');
@@ -38,6 +38,13 @@ const Home = () => {
   const tShareStats = usetShareStats();
   const tBondStats = useBondStats();
   const tombFinance = useTombFinance();
+
+  useEffect(() => {
+    setIsHome(true);
+    return () => {
+      setIsHome(false);
+    };
+  }, []);
 
   let tomb;
   let tShare;

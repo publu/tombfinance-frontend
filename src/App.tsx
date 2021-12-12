@@ -40,20 +40,7 @@ const App: React.FC = (props) => {
     localStorage.setItem('version_app', '1.1');
   }
 
-  const [path, setPath] = useState(window.location.pathname);
-
-  window.addEventListener(
-    'change',
-    () => {
-      console.log('props');
-      setPath(window.location.pathname);
-    },
-    {},
-  );
-
-  useEffect(() => {
-    console.log('test');
-  }, [window]);
+  const [isHome, setIsHome] = useState(false);
 
   usePromptNetwork();
 
@@ -63,12 +50,14 @@ const App: React.FC = (props) => {
         <div className="relative overflow-hidden">
           <div className={`background bg-bgColor`} />
 
-          {path === '/' && <div className={`background-home home-sky`} />}
+          {isHome && <div className={`background-home home-sky`} />}
+          {!isHome && <div className={`background-home sky`} />}
+          {!isHome && <div className={`background cemetry`} />}
           <Nav />
           <Suspense fallback={<Loader />}>
             <Switch>
               <Route exact path="/">
-                <Home />
+                <Home setIsHome={setIsHome} />
               </Route>
               <Route path="/cemetery">
                 <Cemetery />
