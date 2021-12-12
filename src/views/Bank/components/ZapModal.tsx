@@ -88,16 +88,10 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
       </Typography>
 
       <StyledActionSpacer />
-      <InputLabel style={{ color: '#2c2560' }} id="label">
+      <InputLabel style={{ color: '#fff' }} id="label">
         Select asset to zap with
       </InputLabel>
-      <Select
-        onChange={handleChangeAsset}
-        style={{ color: '#2c2560' }}
-        labelId="label"
-        id="select"
-        value={zappingToken}
-      >
+      <Select onChange={handleChangeAsset} style={{ color: '#fff' }} labelId="label" id="select" value={zappingToken}>
         <StyledMenuItem value={FTM_TICKER}>FTM</StyledMenuItem>
         <StyledMenuItem value={TSHARE_TICKER}>TSHARE</StyledMenuItem>
         {/* Tomb as an input for zapping will be disabled due to issues occuring with the Gatekeeper system */}
@@ -121,15 +115,14 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
         {tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}){' '}
       </StyledDescriptionText>
       <ModalActions>
-        <Button
-          color="primary"
-          variant="contained"
+        <button
+          className="btn"
           onClick={() =>
             approveZapperStatus !== ApprovalState.APPROVED ? approveZapper() : onConfirm(zappingToken, tokenName, val)
           }
         >
           {approveZapperStatus !== ApprovalState.APPROVED ? 'Approve' : "Let's go"}
-        </Button>
+        </button>
       </ModalActions>
 
       <StyledActionSpacer />
@@ -157,7 +150,7 @@ const StyledDescriptionText = styled.div`
 const StyledMenuItem = withStyles({
   root: {
     backgroundColor: 'white',
-    color: '#2c2560',
+    color: '#fff',
     '&:hover': {
       backgroundColor: 'grey',
       color: '#2c2560',

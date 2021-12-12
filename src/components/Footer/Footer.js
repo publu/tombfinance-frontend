@@ -10,10 +10,16 @@ function Footer() {
       <img src={tomb} width={20} height={20} />
       <span className="text-xs tracking-tight mx-1 text-gray-100">Copyright © Tomb Finance 2021</span>
       <img src={tomb} width={20} height={20} />
-      <div className="flex gap-x-3 ml-8">
-        <img src={twitter} width={20} height={20} />
-        <img src={github} width={20} height={20} />
-        <img src={discord} width={20} height={20} />
+      <div className="flex items-center gap-x-3 ml-8">
+        <a href="https://twitter.com/tombfinance" target="_blank" rel="noreferrer noopener">
+          <img src={twitter} width={20} height={20} />
+        </a>
+        <a href="https://github.com/tombfinance/tombfinance-frontend" target="_blank" rel="noreferrer noopener">
+          <img src={github} width={20} height={20} />
+        </a>
+        <a className="mt-1" href="discord.gg/vANnESmVdz" target="_blank" rel="noreferrer noopener">
+          <img src={discord} width={19} height={19} />
+        </a>
       </div>
     </div>
   );
