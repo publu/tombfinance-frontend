@@ -1,7 +1,7 @@
 import { React, useMemo } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import useTombStats from '../hooks/useTombStats';
 import usetShareStats from '../hooks/usetShareStats';
 import useBondStats from '../hooks/useBondStats';
@@ -33,6 +33,8 @@ export default function Nav() {
   const tombStats = useTombStats();
   const tShareStats = usetShareStats();
   const tBondStats = useBondStats();
+
+  const { pathname } = useLocation();
 
   let tomb;
   let tShare;
@@ -70,10 +72,11 @@ export default function Nav() {
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4 lg:space-x-10 tracking-wide">
                     {navigation.map((item) => {
+                      console.log(item);
                       return (
                         <div
                           className={`
-                            ${window.location.pathname == item.href ? 'nav-selected' : 'hover:text-white'}
+                            ${pathname == item.href ? 'nav-selected' : 'hover:text-white'}
                             
                           `}
                         >
