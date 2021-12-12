@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState } from 'react';
+import React, { Suspense, lazy, useState, useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider as TP } from '@material-ui/core/styles';
@@ -43,12 +43,17 @@ const App: React.FC = (props) => {
   const [path, setPath] = useState(window.location.pathname);
 
   window.addEventListener(
-    'onchage',
+    'change',
     () => {
+      console.log('props');
       setPath(window.location.pathname);
     },
     {},
   );
+
+  useEffect(() => {
+    console.log('test');
+  }, [window]);
 
   usePromptNetwork();
 

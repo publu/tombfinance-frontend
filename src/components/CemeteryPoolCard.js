@@ -11,7 +11,7 @@ export default function CemeteryPoolCard({ title, description, buttonText, onCli
       </div>
       <div className="font-Amarante mb-1">{title}</div>
       <div className="font-semibold font-Poppins text-xs text-tomb-purple">{description}</div>
-      <button onClick={() => onClick()} className="btn px-6 md:px-10 mb-2 mt-6">
+      <button onClick={() => onClick && onClick()} className="btn px-6 md:px-10 mb-2 mt-6">
         {buttonText}
       </button>
     </Card>

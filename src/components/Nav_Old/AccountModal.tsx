@@ -25,12 +25,12 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
     <Modal>
       <ModalTitle text="My Wallet" />
 
-      <Balances>
+      <div className="md:flex justify-center">
         <StyledBalanceWrapper>
           <TokenSymbol symbol="TOMB" />
           <StyledBalance>
             <StyledValue>{displayTombBalance}</StyledValue>
-            <Label text="TOMB Available" />
+            <h2 className="text-center md:text-left">TOMB Available</h2>
           </StyledBalance>
         </StyledBalanceWrapper>
 
@@ -38,7 +38,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
           <TokenSymbol symbol="TSHARE" />
           <StyledBalance>
             <StyledValue>{displayTshareBalance}</StyledValue>
-            <Label text="TSHARE Available" />
+            <h2 className="text-center md:text-left">TSHARE Available</h2>
           </StyledBalance>
         </StyledBalanceWrapper>
 
@@ -46,10 +46,10 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
           <TokenSymbol symbol="TBOND" />
           <StyledBalance>
             <StyledValue>{displayTbondBalance}</StyledValue>
-            <Label text="TBOND Available" />
+            <h2 className="text-center md:text-left">TBOND Available</h2>
           </StyledBalance>
         </StyledBalanceWrapper>
-      </Balances>
+      </div>
     </Modal>
   );
 };
@@ -64,13 +64,6 @@ const StyledBalance = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-`;
-
-const Balances = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: ${(props) => props.theme.spacing[4]}px;
 `;
 
 const StyledBalanceWrapper = styled.div`

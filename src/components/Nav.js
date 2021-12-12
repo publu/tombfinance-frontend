@@ -53,7 +53,7 @@ export default function Nav() {
       {({ open }) => (
         <>
           <div className="mx-auto px-2 sm:px-6 lg:px-8">
-            <div className="relative flex items-center justify-between h-16">
+            <div className="relative flex items-center justify-evenly h-16">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -68,11 +68,10 @@ export default function Nav() {
               <div className="flex-shrink-0 flex items-center mx-auto sm:mx-0">
                 <span className="font-Amarante text-2xl cursor-pointer select-none">Tomb Finance</span>
               </div>
-              <div className="flex justify-center sm:items-stretch sm:justify-start">
+              <div className="flex justify-center sm:items-stretch sm:justify-start sm:mx-6">
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4 lg:space-x-10 tracking-wide">
                     {navigation.map((item) => {
-                      console.log(item);
                       return (
                         <div
                           className={`
@@ -95,7 +94,7 @@ export default function Nav() {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="absolute inset-y-0 right-0 flex items-center flex-shrink-0 pr-2 sm:static sm:inset-auto sm:pr-0">
                 <AccountButton className="hidden md:block" text="Connect Wallet" />
               </div>
             </div>

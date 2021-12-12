@@ -74,7 +74,7 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
         </div>
       </div>
       <div className="font-Amarante mb-1">
-        {action} {fromTokenName}
+        {action} {toTokenName}
       </div>
       <div className="font-semibold font-Poppins text-xs text-tomb-purple">
         {fromTokenName} to {toTokenName}

@@ -17,7 +17,7 @@ export default function CemeteryCard({ title, descriptionTitle, description, but
         <br />
         {description}
       </div>
-      <button onClick={() => onClick()} className="btn mb-2 mt-6 px-10">
+      <button onClick={() => onClick && onClick()} className="btn mb-2 mt-6 px-10">
         {buttonText}
       </button>
     </Card>

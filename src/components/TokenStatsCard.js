@@ -5,20 +5,17 @@ import useWallet from 'use-wallet';
 import TSHARE from '../assets/img/TSHARE.svg';
 import TOMB from '../assets/img/TOMB.svg';
 import TBOND from '../assets/img/TBOND.svg';
+import useTombFinance from '../hooks/useTombFinance';
 
 export default function TokenStatsCard({ token, ftmPrice, usdPrice, mktCap, circSupply, totalSupply, disabled, link }) {
   const { account } = useWallet();
-  console.log(document.getElementById('account-button'));
 
-  const connectMetaMask = () => {
-    const button = document.getElementById('account-button');
-    button.click();
-    console.log(button);
-  };
+  const tombFinance = useTombFinance();
+
   const icons = {
     TSHARE: TSHARE,
     TBOND: TBOND,
-    TOMB: TSHARE,
+    TOMB: TOMB,
   };
 
   return (
@@ -28,14 +25,13 @@ export default function TokenStatsCard({ token, ftmPrice, usdPrice, mktCap, circ
           <img className="mr-2" src={icons[token]} width={25} height={25} />
           <span className="font-Amarante text-lg tracking-wider">${token}</span>
         </div>
-        {!account && (
-          <div
-            onClick={() => connectMetaMask()}
-            className="flex flex-shrink-0 md:flex justify-center items-center align-middle border-1 cursor-pointer border-bright-purple rounded-xl p-1 py-2"
-          >
-            <img onClick={() => connectMetaMask()} src={metaMaskIcon} width={42} height={30} />
-          </div>
-        )}
+
+        <div
+          onClick={() => tombFinance.watchAssetInMetamask(token)}
+          className="flex flex-shrink-0 md:flex justify-center items-center align-middle border-1 cursor-pointer border-bright-purple rounded-xl p-1 py-2"
+        >
+          <img src={metaMaskIcon} width={42} height={30} />
+        </div>
       </div>
 
       <span className="text-tomb-purple text-xs font-semibold">Current Price</span>

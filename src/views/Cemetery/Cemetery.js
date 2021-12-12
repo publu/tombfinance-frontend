@@ -122,6 +122,7 @@ const Cemetery = () => {
         <div className="mt-12">
           {showLegacy && (
             <>
+              <span ref={legacyRef} />
               <div className="w-9/12 md:w-1/2 mx-auto mt-12">
                 <CemeteryCard
                   title="TOMB-FTM-LP"
@@ -161,11 +162,11 @@ const Cemetery = () => {
                   onClick={() => null}
                 />
               </div>
-              <span ref={legacyRef} />
             </>
           )}
           {showTomb && (
             <>
+              <span ref={tombRef} />
               <CemeterySection
                 card1={{ icon1: TSHARE, button1Text: 'Claim', tokenName: 'TSHARE Earned' }}
                 card2={{
@@ -184,11 +185,11 @@ const Cemetery = () => {
                 }}
                 bank={showTombData}
               />
-              <span ref={tombRef} />
             </>
           )}
           {showTSHARE && (
             <>
+              <span ref={TSHARERef} />
               <CemeterySection
                 card1={{ icon1: TSHARE, button1Text: 'Claim', tokenName: 'TSHARE Earned' }}
                 card2={{
@@ -207,7 +208,6 @@ const Cemetery = () => {
                 }}
                 bank={showTSHAREData}
               />
-              <span ref={TSHARERef} />
             </>
           )}
         </div>
