@@ -11,15 +11,7 @@ interface ExchangeStatProps {
 }
 
 const ExchangeStat: React.FC<ExchangeStatProps> = ({ tokenName, description, price }) => {
-  return (
-    // <Card>
-    //   <StyledCardContentInner>
-    //     <StyledCardTitle>{`💰 ${tokenName} = ${price} FTM`}</StyledCardTitle>
-    //     <StyledDesc>{description}</StyledDesc>
-    //   </StyledCardContentInner>
-    // </Card>
-    <PitItem title={description} value={`💰 ${tokenName} = ${price} FTM`} />
-  );
+  return <PitItem title={description} value={`💰 ${tokenName} = ${price} FTM`} />;
 };
 
 const StyledCardTitle = styled.div`

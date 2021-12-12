@@ -62,8 +62,6 @@ const Pit: React.FC = () => {
 
   return (
     <Page>
-      {/* @ts-ignore */}
-      <ExchangeModal max={'2524BA'} title="test" description="description" action="test" tokenName="TBOND" />
       {!!account ? (
         <>
           <div className="flex flex-col mx-auto sm:mr-8 items-center mt-10 mb-10">

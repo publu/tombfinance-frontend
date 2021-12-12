@@ -27,18 +27,24 @@ const ExchangeModal: React.FC<ExchangeModalProps> = ({
   tokenName,
 }) => {
   const [val, setVal] = useState('');
-  // const fullBalance = useMemo(() => getFullDisplayBalance(max), [max]);
+  const fullBalance = useMemo(() => getFullDisplayBalance(max), [max]);
 
-  // const handleChange = useCallback((e: React.FormEvent<HTMLInputElement>) => setVal(e.currentTarget.value), [setVal]);
+  const handleChange = useCallback((e: React.FormEvent<HTMLInputElement>) => setVal(e.currentTarget.value), [setVal]);
 
-  // const handleSelectMax = useCallback(() => {
-  // setVal(fullBalance);
-  // }, [fullBalance, setVal]);
+  const handleSelectMax = useCallback(() => {
+    setVal(fullBalance);
+  }, [fullBalance, setVal]);
 
   return (
     <Modal>
       <ModalTitle text={title} />
-      <TokenInput value={val} onSelectMax={() => null} onChange={() => null} max={'As123'} symbol={tokenName} />
+      <TokenInput
+        value={val}
+        onSelectMax={handleSelectMax}
+        onChange={handleChange}
+        max={fullBalance}
+        symbol={tokenName}
+      />
       <Label text={description} />
       <ModalActions>
         <Button className="w-full" text="Cancel" variant="secondary" onClick={onDismiss} />
