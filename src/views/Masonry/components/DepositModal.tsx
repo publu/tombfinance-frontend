@@ -45,9 +45,9 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
         symbol={tokenName}
       />
       <ModalActions>
-        <Button color="primary" variant="contained" onClick={() => onConfirm(val)}>
+        <button className="btn" onClick={() => onConfirm(val)}>
           Confirm
-        </Button>
+        </button>
       </ModalActions>
     </Modal>
   );

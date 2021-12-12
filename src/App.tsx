@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider as TP } from '@material-ui/core/styles';
@@ -40,7 +40,16 @@ const App: React.FC = (props) => {
     localStorage.setItem('version_app', '1.1');
   }
 
-  const path = window.location.pathname;
+  const [path, setPath] = useState(window.location.pathname);
+
+  window.addEventListener(
+    'onchage',
+    () => {
+      setPath(window.location.pathname);
+    },
+    {},
+  );
+
   usePromptNetwork();
 
   return (

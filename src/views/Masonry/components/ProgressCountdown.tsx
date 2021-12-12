@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Countdown, { CountdownRenderProps } from 'react-countdown';
 import Card from '../../../components/Card.js';
+import MasonryItem from '../../../components/MasonryItem.js';
+import PitItem from '../../../components/PitItem.js';
 
 interface ProgressCountdownProps {
   base: Date;
@@ -28,10 +30,13 @@ const ProgressCountdown: React.FC<ProgressCountdownProps> = ({ base, deadline, h
     );
   };
   return (
-    <Card className="mt-4" innerClass="p-2 md:p-4 text-center text-3xl">
-      <h2 className="text-sm">{description}</h2>
-      <Countdown key={new Date().getTime()} date={deadline} renderer={countdownRenderer} />
-    </Card>
+    <>
+      {/* @ts-ignore */}
+      <MasonryItem
+        title={description}
+        value={<Countdown key={new Date().getTime()} date={deadline} renderer={countdownRenderer} />}
+      />
+    </>
   );
 };
 

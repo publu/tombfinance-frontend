@@ -8,6 +8,7 @@ export default function CemeteryBuyCard({
   button2Text,
   button3Text,
   disabled,
+  onClick,
   onClick1,
   onClick2,
   onClick3,
@@ -31,19 +32,24 @@ export default function CemeteryBuyCard({
       <div className="font-semibold font-Amarante text-base text-tomb-purple">
         USD <span className="text-white">{dollarValue}</span>
       </div>
-      <button onClick={() => onClick1()} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
-        {button1Text}
-      </button>
-      {onClick2 && (
-        <button onClick={() => onClick2()} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
-          {button2Text}
+      <div className="flex justify-center space-x-2">
+        <button
+          onClick={() => (onClick1 ? onClick1() : onClick())}
+          className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}
+        >
+          {button1Text}
         </button>
-      )}
-      {onClick3 && (
-        <button onClick={() => onClick3()} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
-          {button3Text}
-        </button>
-      )}
+        {onClick2 && (
+          <button onClick={() => onClick2()} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
+            {button2Text}
+          </button>
+        )}
+        {onClick3 && (
+          <button onClick={() => onClick3()} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
+            {button3Text}
+          </button>
+        )}
+      </div>
     </Card>
   );
 }

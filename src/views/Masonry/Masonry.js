@@ -57,7 +57,7 @@ const Masonry = () => {
           </div>
           <div className="grid md:grid-cols-2 xl:w-9/12 mx-auto gap-x-10 px-10">
             <ProgressCountdown base={moment().toDate()} hideBar={true} deadline={to} description="Next Epoch" />
-            <MasonryItem title={'Current Epoch'} value={Number(currentEpoch)} />
+            <MasonryItem title={'Current Epoch'} value={currentEpoch.toString()} />
             <MasonryItem title={'TWAP'} value={scalingFactor} />
             <MasonryItem title={'TSHARE Staked'} value={getDisplayBalance(totalStaked)} />
           </div>

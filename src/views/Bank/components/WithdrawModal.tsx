@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
-import { Button } from '@material-ui/core';
 // import Button from '../../../components/Button'
 import Modal, { ModalProps } from '../../../components/Modal';
 import ModalActions from '../../../components/ModalActions';
@@ -46,9 +45,9 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({ onConfirm, onDismiss, max
         symbol={tokenName}
       />
       <ModalActions>
-        <Button color="primary" variant="contained" onClick={() => onConfirm(val)}>
+        <button className="btn" onClick={() => onConfirm(val)}>
           Confirm
-        </Button>
+        </button>
         {/* <Button color="secondary" onClick={onDismiss}>Cancel</Button> */}
 
         {/* <Button text="Cancel" variant="secondary" onClick={onDismiss} />
