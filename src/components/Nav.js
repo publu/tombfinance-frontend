@@ -66,7 +66,9 @@ export default function Nav() {
                 </Disclosure.Button>
               </div>
               <div className="flex-shrink-0 flex items-center mx-auto sm:mx-0">
-                <span className="font-Amarante text-2xl md:text-3xl cursor-pointer select-none">Tomb Finance</span>
+                <span className="font-Amarante text-2xl md:text-3xl cursor-pointer select-none textShadowLg">
+                  Tomb Finance
+                </span>
               </div>
               <div className="flex justify-center sm:items-stretch sm:justify-start md:mx-6 md:mr-16">
                 <div className="hidden sm:block sm:ml-6">
@@ -81,11 +83,15 @@ export default function Nav() {
                         >
                           {item.name === 'Docs' ? (
                             <a href="https://docs.tomb.finance/" target="_blank" rel="noopener noreferrer">
-                              <span className="text-sm md:text-md font-semibold cursor-pointer">{item.name}</span>
+                              <span className="text-sm md:text-md font-semibold cursor-pointer textShadowLg">
+                                {item.name}
+                              </span>
                             </a>
                           ) : (
                             <Link key={item.name} to={item.href} aria-current={item.current ? 'page' : undefined}>
-                              <span className="text-sm md:text-md font-semibold cursor-pointer">{item.name}</span>
+                              <span className="text-sm md:text-md font-semibold cursor-pointer textShadowLg">
+                                {item.name}
+                              </span>
                             </Link>
                           )}
                         </div>
