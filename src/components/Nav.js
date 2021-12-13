@@ -103,15 +103,15 @@ export default function Nav() {
               </div>
             </div>
             <div className="flex justify-center gap-x-6 mt-3">
-              <div className="flex items-center">
+              <div className="flex items-center flex-col gap-y-2 sm:flex-row">
                 <img src={tombIcon} width={25} height={25} />
                 <span className="ml-2 font-semibold text-sm">{tombPriceInFTM ? tombPriceInFTM : '-.----'} FTM</span>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center flex-col gap-y-2 sm:flex-row">
                 <img src={tbond} width={25} height={25} />
                 <span className="ml-2 font-semibold text-sm">{tBondPriceInFTM ? tBondPriceInFTM : '-.----'} FTM</span>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center flex-col gap-y-2 sm:flex-row">
                 <img src={tshare} width={25} height={25} />
                 <span className="ml-2 font-semibold text-sm">
                   {tSharePriceInFTM ? numberWithCommas(tSharePriceInFTM) : '-.----'} FTM
