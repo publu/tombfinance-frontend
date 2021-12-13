@@ -98,7 +98,7 @@ export default function Nav() {
                 <AccountButton className="hidden md:block" text="Connect Wallet" />
               </div>
             </div>
-            <div className="flex justify-center gap-x-4 mt-3">
+            <div className="flex justify-center gap-x-6 mt-3">
               <div className="flex items-center">
                 <img src={tombIcon} width={25} height={25} />
                 <span className="ml-2 font-semibold text-sm">{tombPriceInFTM ? tombPriceInFTM : '-.----'} FTM</span>

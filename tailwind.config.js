@@ -10,6 +10,8 @@ module.exports = {
         'bright-purple': '#9401FB',
         'dark-purple': '#16002c',
         bgColor: '#16072B',
+        metaMask: '#FF7940',
+        walletConnect: '#42BBFF',
       },
       fontFamily: {
         Amarante: ['Amarante', 'cursive'],
