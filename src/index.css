@@ -4,8 +4,54 @@
 @tailwind components;
 @tailwind utilities;
 
-.wallet-bg {
+.wallet-button .wallet-bg {
   background: url(assets/img/card.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.wallet-button .wallet-bg {
+  background: url(assets/img/card.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.wallet-button:hover .wallet-bg {
+  background: url(assets/img/card-hover.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -100;
+}
+
+.wallet-button .wallet-bg-long {
+  background: url(assets/img/card-long.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -100;
+}
+
+.wallet-button:hover .wallet-bg-long {
+  background: url(assets/img/card-long-hover.svg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: absolute;
@@ -77,6 +123,7 @@
     overflow-x: hidden;
     color: rgba(255, 242, 209, 1);
     background-color: #16072b;
+    font-family: Poppins;
   }
 
   .content-wrapper {

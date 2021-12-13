@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
+import Button from '../Button';
 
 const WalletCard = ({ icon, onConnect, title }) => (
-  <Button fullWidth onClick={onConnect} className="btn">
-    <span style={{ marginRight: '1rem', height: '2rem' }}>{icon}</span>
+  <Button onClick={onConnect} className="btn flex items-center">
+    <span className="mr-1 w-12 flex" style={{ height: '2rem' }}>
+      {icon}
+    </span>
     <span>{title}</span>
   </Button>
 );

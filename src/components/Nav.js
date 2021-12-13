@@ -51,7 +51,7 @@ export default function Nav() {
   return (
     <Disclosure as="nav">
       {({ open }) => (
-        <>
+        <div className="w-screen">
           <div className="mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -68,7 +68,7 @@ export default function Nav() {
               <div className="flex-shrink-0 flex items-center mx-auto sm:mx-0">
                 <span className="font-Amarante text-2xl md:text-3xl cursor-pointer select-none">Tomb Finance</span>
               </div>
-              <div className="flex justify-center sm:items-stretch sm:justify-start sm:mx-6 sm:mr-16">
+              <div className="flex justify-center sm:items-stretch sm:justify-start md:mx-6 md:mr-16">
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4 lg:space-x-10 tracking-wide">
                     {navigation.map((item) => {
@@ -100,15 +100,15 @@ export default function Nav() {
             </div>
             <div className="flex justify-center gap-x-4 mt-3">
               <div className="flex items-center">
-                <img src={tombIcon} width={20} height={20} />
+                <img src={tombIcon} width={25} height={25} />
                 <span className="ml-2 font-semibold text-sm">{tombPriceInFTM ? tombPriceInFTM : '-.----'} FTM</span>
               </div>
               <div className="flex items-center">
-                <img src={tbond} width={20} height={20} />
+                <img src={tbond} width={25} height={25} />
                 <span className="ml-2 font-semibold text-sm">{tBondPriceInFTM ? tBondPriceInFTM : '-.----'} FTM</span>
               </div>
               <div className="flex items-center">
-                <img src={tshare} width={20} height={20} />
+                <img src={tshare} width={25} height={25} />
                 <span className="ml-2 font-semibold text-sm">{tSharePriceInFTM ? tSharePriceInFTM : '-.----'} FTM</span>
               </div>
             </div>
@@ -135,7 +135,7 @@ export default function Nav() {
               )}
             </div>
           </Disclosure.Panel>
-        </>
+        </div>
       )}
     </Disclosure>
   );

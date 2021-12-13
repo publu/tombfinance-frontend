@@ -43,21 +43,21 @@ const WalletProviderModal = ({ open, handleClose }) => {
           <h2 className="font-bold mb-2">Connect Wallet</h2>
           <div className="flex flex-col gap-y-2">
             <WalletCard
-              icon={<img src={metamaskLogo} alt="Metamask logo" style={{ height: 32 }} />}
+              icon={<img src={metamaskLogo} alt="Metamask logo" style={{ width: 32 }} />}
               onConnect={() => {
                 connect('injected');
               }}
               title="Metamask"
             />
             <WalletCard
-              icon={<img src={walletConnectLogo} alt="Wallet Connect logo" style={{ height: 24 }} />}
+              icon={<img src={walletConnectLogo} alt="Wallet Connect logo" style={{ width: 32 }} />}
               onConnect={() => {
                 connect('walletconnect');
               }}
               title="WalletConnect"
             />
             <WalletCard
-              icon={<img src={coingBaseLogo} alt="Coinbase wallet logo" style={{ height: 32 }} />}
+              icon={<img src={coingBaseLogo} alt="Coinbase wallet logo" style={{ width: 32 }} />}
               onConnect={() => {
                 connect('walletlink');
               }}
