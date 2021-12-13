@@ -126,7 +126,7 @@ const Home = ({ setIsHome }) => {
       <Page>
         <div className="flex flex-col">
           <Tvl TVL={TVL} />
-          <div className="grid grid-cols-1 gap-y-3 md:grid-cols-3 mt-14 mx-auto gap-x-3">
+          <div className="grid grid-cols-1 gap-y-6 md:grid-cols-3 mt-14 mx-12 md:mx-auto gap-x-3">
             <TokenStatsCard
               token="TOMB"
               ftmPrice={tombPriceInFTM ? tombPriceInFTM : '-.----'}
