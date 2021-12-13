@@ -92,7 +92,13 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
         <InputLabel style={{ color: '#fff' }} id="label">
           Select asset to zap with
         </InputLabel>
-        <Select onChange={handleChangeAsset} style={{ color: '#fff' }} labelId="label" id="select" value={zappingToken}>
+        <Select
+          onChange={handleChangeAsset}
+          style={{ color: '#1b0033', background: '#fff' }}
+          labelId="label"
+          id="select"
+          value={zappingToken}
+        >
           <StyledMenuItem value={FTM_TICKER}>FTM</StyledMenuItem>
           <StyledMenuItem value={TSHARE_TICKER}>TSHARE</StyledMenuItem>
           {/* Tomb as an input for zapping will be disabled due to issues occuring with the Gatekeeper system */}
@@ -105,7 +111,7 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
           max={zappingTokenBalance}
           symbol={zappingToken}
         />
-        <p className="font-Poppins">"Zap Estimations</p>
+        <p className="font-Poppins">Zap Estimations</p>
         <StyledDescriptionText>
           {' '}
           {tokenName}: {Number(estimate.token0) / Number(ftmAmountPerLP)}

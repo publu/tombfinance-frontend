@@ -25,6 +25,7 @@ import graveLight from '../../assets/img/grave-light.svg';
 import fantom from '../../assets/img/fantom.svg';
 import danger from '../../assets/img/danger.svg';
 import boo from '../../assets/img/boo.svg';
+import zapImg from '../../assets/img/zap.svg';
 import linkImg from '../../assets/img/link.svg';
 import useTombStats from '../../hooks/useTombStats';
 import useShareStats from '../../hooks/usetShareStats';
@@ -179,7 +180,7 @@ const Cemetery = () => {
                   icon1: TOMB,
                   icon2: fantom,
                   button1Text: '-',
-                  button2Text: 'Zap',
+                  button2Text: <img width={12} height={12} src={zapImg} />,
                   button3Text: '+',
                   tokenName: 'TOMB-FTM-LP Staked',
                 }}
@@ -202,7 +203,7 @@ const Cemetery = () => {
                   icon1: TSHARE,
                   icon2: fantom,
                   button1Text: '-',
-                  button2Text: 'Zap',
+                  button2Text: <img width={12} height={12} src={zapImg} />,
                   button3Text: '+',
                   tokenName: 'TSHARE-FTM-LP Staked',
                 }}
