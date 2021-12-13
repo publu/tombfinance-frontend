@@ -4,6 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+.wallet-bg {
+  background: url(assets/img/card.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
 .background {
   position: fixed;
   height: 100vh;
@@ -35,9 +46,10 @@
   position: absolute;
   z-index: -100;
   width: 100vw;
-  height: 100vh;
+  height: 150vh;
   background: url(assets/img/home-grave.png);
   background-position: 50% 50%;
+
   background-repeat: no-repeat;
   background-size: 100vw;
 }
@@ -68,7 +80,7 @@
   }
 
   .content-wrapper {
-    min-height: calc(100vh - 35px);
+    min-height: calc(100vh - 235px);
     padding-bottom: 1rem;
   }
 }

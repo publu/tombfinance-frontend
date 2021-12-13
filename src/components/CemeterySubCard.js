@@ -1,4 +1,5 @@
 import Card from './Card';
+import zapImg from '../assets/img/zap.svg';
 
 export default function CemeteryBuyCard({
   coinValue,
@@ -35,17 +36,17 @@ export default function CemeteryBuyCard({
       <div className="flex justify-center space-x-2">
         <button
           onClick={() => (onClick1 ? onClick1() : onClick())}
-          className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}
+          className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'} ${onClick1 && 'w-min px-5'}`}
         >
           {button1Text}
         </button>
         {onClick2 && (
-          <button onClick={() => onClick2()} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
+          <button onClick={() => onClick2()} className={`btn mb-2 w-min mt-6 px-5 ${disabled && 'btn-disabled'}`}>
             {button2Text}
           </button>
         )}
         {onClick3 && (
-          <button onClick={() => onClick3()} className={`btn mb-2 mt-6 px-10 ${disabled && 'btn-disabled'}`}>
+          <button onClick={() => onClick3()} className={`btn mb-2 w-min mt-6 px-5 ${disabled && 'btn-disabled'}`}>
             {button3Text}
           </button>
         )}
