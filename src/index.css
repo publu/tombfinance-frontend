@@ -73,6 +73,7 @@
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: 50vw;
+  z-index: -100;
 }
 
 .sky {
@@ -85,13 +86,14 @@
   background: url(assets/img/bg-stars.png);
   background-repeat: no-repeat;
   background-size: 100vw;
+  z-index: -200;
 }
 
 .background-home {
   position: absolute;
   height: 100%;
   width: 100vw;
-  z-index: -1000;
+  z-index: -300;
 }
 
 .home-grave {
