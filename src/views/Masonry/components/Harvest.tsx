@@ -33,8 +33,8 @@ const Harvest: React.FC = () => {
   const { from, to } = useClaimRewardTimerMasonry();
 
   return (
-    <div className="flex flex-col items-center">
-      <Card innerClass="pt-12 pb-6 px-10" className="relative w-full text-center text-3xl mt-4">
+    <div className="flex flex-col items-center w-96">
+      <Card innerClass="pt-12 pb-6 px-10" className="relative text-center text-3xl mt-4 w-96">
         <div className="flex justify-center absolute w-full left-0 -top-10">
           <div className="flex justify-center w-20 h-20 rounded-full bg-tombGradient">
             <TokenSymbol symbol="TOMB" />

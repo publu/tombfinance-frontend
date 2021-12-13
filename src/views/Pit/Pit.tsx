@@ -67,7 +67,7 @@ const Pit: React.FC = () => {
           <div className="flex flex-col mx-auto sm:mr-8 items-center mt-10 mb-10">
             <span className="text-5xl font-Amarante tracking-tighter">Pit</span>
           </div>
-          <div className="grid md:grid-cols-2 md:gap-x-4 w-10/12 md:w-3/4 mx-auto">
+          <div className="flex flex-col md:flex-row w-full justify-center items-center cols-2 md:gap-x-4 md:w-3/4 mx-auto">
             <ExchangeStat
               tokenName="TOMB"
               description="Last-Hour TWAP Price"
@@ -79,7 +79,7 @@ const Pit: React.FC = () => {
               price={Number(bondStat?.tokenInFtm).toFixed(2) || '-'}
             />
           </div>
-          <div className="grid md:grid-cols-2 w-10/12 lg:w-3/4 mx-auto mt-10 gap-x-10 gap-y-8">
+          <div className="flex flex-col md:flex-row w-full justify-center items-center lg:w-3/4 mx-auto mt-10 gap-x-4 gap-y-8">
             <ExchangeCard
               action="Purchase"
               fromToken={tombFinance.TOMB}

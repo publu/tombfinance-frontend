@@ -17,7 +17,7 @@ export default function CemeteryBuyCard({
   icon2,
 }) {
   return (
-    <Card innerClass="pt-12 pb-6 px-10 sm:px-2" className="relative text-center w-full text-3xl mt-4">
+    <Card innerClass="pt-12 pb-6 px-10 sm:px-2" className="relative text-center w-72 md:w-96 text-3xl mt-4">
       <div className="flex justify-center absolute w-full left-0 -top-8">
         <div className={`flex justify-center w-16 h-16 rounded-full bg-tombGradient ${icon2 && '-mr-1'}`}>
           <img src={icon1} width={30} height={30} />

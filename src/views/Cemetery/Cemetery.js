@@ -89,7 +89,7 @@ const Cemetery = () => {
           <span className="text-6xl font-Amarante tracking-tighter">Cemetery</span>
           <span className="text-xs mt-1">Earn TSHARE by staking LP</span>
         </div>
-        <div className="grid md:grid-cols-2 w-9/12 md:min-w-140 lg:w-1/2 mx-auto gap-x-10 gap-y-6 ">
+        <div className="flex flex-col md:flex-row w-full justify-center items-center mx-auto gap-x-8 gap-y-12 ">
           <CemeteryCard
             title="TOMB-FTM-LP"
             descriptionTitle="Deposit:"
@@ -124,7 +124,7 @@ const Cemetery = () => {
           {showLegacy && (
             <>
               <span ref={legacyRef} />
-              <div className="w-9/12 md:w-1/2 mx-auto mt-12">
+              <div className="flex flex-row justify-center w-9/12 md:w-1/2 mx-auto mt-12">
                 <CemeteryCard
                   title="TOMB-FTM-LP"
                   description="Deposiy TOMB-FTM-LP Earn TOMB"

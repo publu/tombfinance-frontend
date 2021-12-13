@@ -26,12 +26,12 @@ export default function TokenStatsCard({ token, ftmPrice, usdPrice, mktCap, circ
           <span className="font-Amarante text-lg tracking-wider">${token}</span>
         </div>
 
-        <divx
+        <div
           onClick={() => tombFinance.watchAssetInMetamask(token)}
-          className="flex flex-shrink-0 md:flex hover:btn hover:p-1 hover:py-2 justify-center items-center align-middle border-1 cursor-pointer border-bright-purple rounded-xl p-1 py-2"
+          className="flex flex-shrink-0 md:flex hover:btn hover:rounded-xl hover:p-1 hover:py-2 justify-center items-center align-middle border-1 cursor-pointer border-bright-purple rounded-xl p-1 py-2"
         >
           <img src={metaMaskIcon} width={42} height={30} />
-        </divx>
+        </div>
       </div>
 
       <span className="text-tomb-purple text-xs font-semibold">Current Price</span>
