@@ -1,5 +1,6 @@
 import Card from './Card';
 import zapImg from '../assets/img/zap.svg';
+import { numberWithCommas } from '../utils/utils';
 
 export default function CemeteryBuyCard({
   coinValue,
@@ -29,9 +30,9 @@ export default function CemeteryBuyCard({
         )}
       </div>
       <div className="font-semibold font-Poppins text-xs text-tomb-purple">{tokenName}</div>
-      <div className="font-Amarante mb-1 mt-1">{coinValue}</div>
+      <div className="font-Amarante mb-1 mt-1">{numberWithCommas(coinValue)}</div>
       <div className="font-semibold font-Amarante text-base text-tomb-purple">
-        USD <span className="text-white">{dollarValue}</span>
+        USD <span className="text-white">{numberWithCommas(dollarValue)}</span>
       </div>
       <div className="flex justify-center space-x-2">
         <button

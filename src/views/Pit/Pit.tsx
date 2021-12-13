@@ -21,6 +21,7 @@ import TBOND from '../../assets/img/TBOND.svg';
 import TOMB from '../../assets/img/TOMB.svg';
 import ExchangeModal from './components/ExchangeModal';
 import { BigNumber } from 'ethers';
+import { numberWithCommas } from '../../utils/utils';
 
 const BackgroundImage = createGlobalStyle`
   body {
@@ -89,7 +90,7 @@ const Pit: React.FC = () => {
               priceDesc={
                 !isBondPurchasable
                   ? 'TOMB is over peg'
-                  : getDisplayBalance(bondsPurchasable, 18, 4) + ' TBOND available for purchase'
+                  : numberWithCommas(getDisplayBalance(bondsPurchasable, 18, 4)) + ' TBOND available for purchase'
               }
               onExchange={handleBuyBonds}
               disabled={!bondStat || isBondRedeemable}
@@ -103,7 +104,7 @@ const Pit: React.FC = () => {
               fromTokenName="TBOND"
               toToken={tombFinance.TOMB}
               toTokenName="TOMB"
-              priceDesc={`${getDisplayBalance(bondBalance)} TBOND Available in wallet`}
+              priceDesc={`${numberWithCommas(getDisplayBalance(bondBalance))} TBOND Available in wallet`}
               onExchange={handleRedeemBonds}
               disabled={!bondStat || bondBalance.eq(0) || !isBondRedeemable}
               disabledDescription={!isBondRedeemable ? `Enabled when TOMB > ${BOND_REDEEM_PRICE}FTM` : null}
