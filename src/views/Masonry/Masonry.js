@@ -52,10 +52,10 @@ const Masonry = () => {
             <span className="text-6xl font-Amarante tracking-tighter">Masonry</span>
           </div>
 
-          <div className="xl:w-9/12 mx-auto gap-x-10 px-10">
+          <div className="xl:w-9/12 mx-auto gap-x-10 px-10 max-w-4xl">
             <MasonryItem title={'APR'} value={masonryAPR.toFixed(2) + '%'} />
           </div>
-          <div className="grid md:grid-cols-2 xl:w-9/12 mx-auto gap-x-10 px-10">
+          <div className="grid md:grid-cols-2 xl:w-9/12 mx-auto gap-x-4 px-10 max-w-4xl">
             <ProgressCountdown base={moment().toDate()} hideBar={true} deadline={to} description="Next Epoch" />
             <MasonryItem title={'Current Epoch'} value={currentEpoch.toString()} />
             <MasonryItem title={'TWAP'} value={scalingFactor} />
