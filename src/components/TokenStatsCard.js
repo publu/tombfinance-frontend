@@ -19,7 +19,7 @@ export default function TokenStatsCard({ token, ftmPrice, usdPrice, mktCap, circ
   };
 
   return (
-    <Card innerClass="flex flex-col text-center items-center lg:w-56 px-4">
+    <Card innerClass="flex flex-col text-center items-center lg:w-64 py-4 px-4">
       <div className="flex justify-between items-center gap-x-6 mb-3 mt-2">
         <div className="flex items-center flex-shrink-0">
           <img className="mr-2" src={icons[token]} width={25} height={25} />
