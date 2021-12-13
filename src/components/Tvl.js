@@ -7,15 +7,20 @@ export default function Tvl({ TVL }) {
         <span className="text-5xl font-Amarante tracking-tighter textShadowLg">Tomb Finance</span>
         <span className="text-xs textShadowLg">The algorithmic stablecoin backed by FTM</span>
       </div>
-      <div style={{ paddingTop: '1.6rem' }} className="btn btn-transparent p-6 text-center flex h-11 items-center">
+      <div
+        style={{ paddingTop: '1.6rem' }}
+        className="btn btn-transparent p-6 text-center min-w-15 flex h-11 items-center"
+      >
         <span className="text-xs font-extrabold mr-2">TVL</span>
-        <CountUp
-          className="text-2xl font-Amarante"
-          style={{ fontSize: '25px', lineHeight: '25px' }}
-          end={TVL}
-          separator=","
-          prefix="$"
-        />
+        <div className="flex justify-center w-full">
+          <CountUp
+            className="text-2xl font-Amarante"
+            style={{ fontSize: '25px', lineHeight: '25px' }}
+            end={TVL}
+            separator=","
+            prefix="$"
+          />
+        </div>
       </div>
     </div>
   );

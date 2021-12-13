@@ -77,21 +77,17 @@ export default function Nav() {
                       return (
                         <div
                           className={`
-                            ${pathname == item.href ? 'nav-selected' : 'hover:text-white'}
+                            ${pathname == item.href ? 'nav-selected textShadowLgSelected' : 'hover:text-white'}
                             
                           `}
                         >
                           {item.name === 'Docs' ? (
                             <a href="https://docs.tomb.finance/" target="_blank" rel="noopener noreferrer">
-                              <span className="text-sm md:text-md font-semibold cursor-pointer textShadowLg">
-                                {item.name}
-                              </span>
+                              <span className="text-sm md:text-md font-semibold cursor-pointer">{item.name}</span>
                             </a>
                           ) : (
                             <Link key={item.name} to={item.href} aria-current={item.current ? 'page' : undefined}>
-                              <span className="text-sm md:text-md font-semibold cursor-pointer textShadowLg">
-                                {item.name}
-                              </span>
+                              <span className="text-sm md:text-md font-semibold cursor-pointer">{item.name}</span>
                             </Link>
                           )}
                         </div>

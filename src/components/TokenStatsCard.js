@@ -6,6 +6,7 @@ import TSHARE from '../assets/img/TSHARE.svg';
 import TOMB from '../assets/img/TOMB.svg';
 import TBOND from '../assets/img/TBOND.svg';
 import useTombFinance from '../hooks/useTombFinance';
+import { formatUnits } from 'ethers/lib/utils';
 
 export default function TokenStatsCard({ token, ftmPrice, usdPrice, mktCap, circSupply, totalSupply, disabled, link }) {
   const { account } = useWallet();
