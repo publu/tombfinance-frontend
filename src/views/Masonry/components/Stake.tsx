@@ -77,8 +77,11 @@ const Stake: React.FC = () => {
   );
 
   return (
-    <div className="flex flex-col items-center">
-      <Card className="mt-4 relative w-full text-center text-3xl" innerClass="pt-12 pb-6 px-10 text-center text-3xl">
+    <div className="flex flex-col items-center w-96">
+      <Card
+        className="mt-4 relative w-full text-center text-3xl"
+        innerClass="pt-12 pb-6 px-10 text-center text-3xl w-96"
+      >
         <div className="flex justify-center absolute w-full left-0 -top-10">
           <div className="flex justify-center w-20 h-20 rounded-full bg-tombGradient">
             <TokenSymbol symbol="TSHARE" />

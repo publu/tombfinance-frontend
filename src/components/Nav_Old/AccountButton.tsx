@@ -28,14 +28,22 @@ const AccountButton: React.FC<AccountButtonProps> = ({ text }) => {
   return (
     <div>
       {!account ? (
-        <button className="btn tracking-wider flex" id="account-button" onClick={handleWalletProviderOpen}>
-          <img className="md:mr-2" src={wallet} />
+        <button
+          className="tracking-wider wallet-button relative flex md:py-8 md:px-8"
+          id="account-button"
+          onClick={handleWalletProviderOpen}
+        >
+          <img className="md:mr-2 p-4 md:p-0" src={wallet} />
           <span className="hidden md:block">{buttonText}</span>
+          <div className="hidden md:block wallet-bg-long" />
+          <div className="wallet-bg md:hidden" />
         </button>
       ) : (
-        <button className="btn tracking-wider flex" onClick={onPresentAccountModal}>
+        <button className="tracking-wider wallet-button p-4 md:p-8 relative flex" onClick={onPresentAccountModal}>
           <img className="md:mr-2" src={wallet} />
           <span className="hidden md:block">My Wallet</span>
+          <div className="hidden md:block wallet-bg-long" />
+          <div className="wallet-bg md:hidden" />
         </button>
       )}
 

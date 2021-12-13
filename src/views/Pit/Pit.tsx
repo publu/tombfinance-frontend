@@ -21,6 +21,7 @@ import TBOND from '../../assets/img/TBOND.svg';
 import TOMB from '../../assets/img/TOMB.svg';
 import ExchangeModal from './components/ExchangeModal';
 import { BigNumber } from 'ethers';
+import { numberWithCommas } from '../../utils/utils';
 
 const BackgroundImage = createGlobalStyle`
   body {
@@ -67,7 +68,7 @@ const Pit: React.FC = () => {
           <div className="flex flex-col mx-auto sm:mr-8 items-center mt-10 mb-10">
             <span className="text-5xl font-Amarante tracking-tighter">Pit</span>
           </div>
-          <div className="grid md:grid-cols-2 md:gap-x-4 w-10/12 md:w-3/4 mx-auto">
+          <div className="flex flex-col md:flex-row w-full justify-center items-center cols-2 md:gap-x-4 md:w-3/4 mx-auto">
             <ExchangeStat
               tokenName="TOMB"
               description="Last-Hour TWAP Price"
@@ -79,7 +80,7 @@ const Pit: React.FC = () => {
               price={Number(bondStat?.tokenInFtm).toFixed(2) || '-'}
             />
           </div>
-          <div className="grid md:grid-cols-2 w-10/12 lg:w-3/4 mx-auto mt-10 gap-x-10 gap-y-8">
+          <div className="flex flex-col md:flex-row w-full justify-center items-center lg:w-3/4 mx-auto mt-10 gap-x-4 gap-y-8">
             <ExchangeCard
               action="Purchase"
               fromToken={tombFinance.TOMB}
@@ -89,7 +90,7 @@ const Pit: React.FC = () => {
               priceDesc={
                 !isBondPurchasable
                   ? 'TOMB is over peg'
-                  : getDisplayBalance(bondsPurchasable, 18, 4) + ' TBOND available for purchase'
+                  : numberWithCommas(getDisplayBalance(bondsPurchasable, 18, 4)) + ' TBOND available for purchase'
               }
               onExchange={handleBuyBonds}
               disabled={!bondStat || isBondRedeemable}
@@ -103,7 +104,7 @@ const Pit: React.FC = () => {
               fromTokenName="TBOND"
               toToken={tombFinance.TOMB}
               toTokenName="TOMB"
-              priceDesc={`${getDisplayBalance(bondBalance)} TBOND Available in wallet`}
+              priceDesc={`${numberWithCommas(getDisplayBalance(bondBalance))} TBOND Available in wallet`}
               onExchange={handleRedeemBonds}
               disabled={!bondStat || bondBalance.eq(0) || !isBondRedeemable}
               disabledDescription={!isBondRedeemable ? `Enabled when TOMB > ${BOND_REDEEM_PRICE}FTM` : null}

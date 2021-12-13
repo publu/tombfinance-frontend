@@ -10,6 +10,8 @@ module.exports = {
         'bright-purple': '#9401FB',
         'dark-purple': '#16002c',
         bgColor: '#16072B',
+        metaMask: '#FF7940',
+        walletConnect: '#42BBFF',
       },
       fontFamily: {
         Amarante: ['Amarante', 'cursive'],
@@ -26,7 +28,7 @@ module.exports = {
       width: {
         140: '44rem',
       },
-      minWidth: { 140: '44rem' },
+      minWidth: { 140: '44rem', 15: '15rem' },
     },
   },
   variants: {

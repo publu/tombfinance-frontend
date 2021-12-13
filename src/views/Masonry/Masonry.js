@@ -62,7 +62,7 @@ const Masonry = () => {
             <MasonryItem title={'TSHARE Staked'} value={getDisplayBalance(totalStaked)} />
           </div>
 
-          <div className="grid lg:grid-cols-2 mx-auto w-9/12 lg:w-1/2 mt-16 gap-x-4 gap-y-10">
+          <div className="flex flex-col md:flex-row w-full justify-center items-center mx-auto mt-16 gap-x-4 gap-y-10">
             <Stake />
             <Harvest />
           </div>

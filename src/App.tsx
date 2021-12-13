@@ -48,11 +48,18 @@ const App: React.FC = (props) => {
     <Providers>
       <Router>
         <div className="relative overflow-hidden">
+          <div
+            className="font-Poppins textShadowLg p-2 text-sm text-center text-black"
+            style={{ backgroundColor: '#FFF2D1' }}
+          >
+            <a href="https://tomb.finance/">Click here </a>if you would like to go back to the old UI
+          </div>
           <div className={`background`} />
 
           {isHome && <div className={`background-home home-sky`} />}
           {!isHome && <div className={`background-home sky`} />}
           {!isHome && <div className={`background cemetry`} />}
+          {!isHome && <div className={`background bg-stars`} />}
           <Nav />
           <Switch>
             <Route exact path="/">

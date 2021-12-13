@@ -113,7 +113,7 @@ export default function CemetrySection({ bank, card1, card2, card3 }) {
         />
         <MasonryItem title="TVL" value={`$${showTombData.statsOnPool?.TVL || '--.--'}`} />
       </div>
-      <div className="grid md:grid-cols-2 md:w-3/4 mx-auto mt-20 gap-x-6">
+      <div className="flex flex-col md:flex-row justify-center items-center mt-20 gap-x-6 gap-y-10">
         <CemeterySubCard
           {...card1}
           coinValue={getDisplayBalance(earnings)}
