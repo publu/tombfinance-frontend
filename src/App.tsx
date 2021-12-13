@@ -53,6 +53,7 @@ const App: React.FC = (props) => {
           {isHome && <div className={`background-home home-sky`} />}
           {!isHome && <div className={`background-home sky`} />}
           {!isHome && <div className={`background cemetry`} />}
+          {!isHome && <div className={`background bg-stars`} />}
           <Nav />
           <Switch>
             <Route exact path="/">

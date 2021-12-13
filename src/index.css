@@ -81,6 +81,12 @@
   background-size: 100vw;
 }
 
+.bg-stars {
+  background: url(assets/img/bg-stars.png);
+  background-repeat: no-repeat;
+  background-size: 100vw;
+}
+
 .background-home {
   position: absolute;
   height: 100%;
