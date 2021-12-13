@@ -5,9 +5,12 @@ function Copy() {
         The first algorithmic stablecoin <br /> on Fantom Opera, pegged to the
         <br /> price of 1 FTM via seigniorage.
       </span>
-      <span className="text-xs tracking-widest text-gray-300 mt-4 textShadow">
-        Stake your TSHARE in the Masonry to earn inflationary TOMB rewards or
-        provide liquidity on pairs and start earning today!
+      <span className="text-md tracking-widest text-gray-300 mt-4 textShadow">
+        Stake your TSHARE in the Masonry to earn inflationary
+        <br />
+        TOMB rewards or provide liquidity on pairs and start
+        <br />
+        earning today!
       </span>
     </div>
   );
