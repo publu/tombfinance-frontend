@@ -102,7 +102,7 @@ const Cemetery = () => {
           <CemeteryCard
             title="TSHARE-FTM-LP"
             descriptionTitle="Deposit:"
-            description="TOMB-FTM-LP Earn TSHARE"
+            description="TSHARE-FTM-LP Earn TSHARE"
             buttonText="View"
             icon1={graveLight}
             icon2={fantom}

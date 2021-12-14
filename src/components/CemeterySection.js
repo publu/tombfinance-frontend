@@ -36,10 +36,14 @@ export default function CemetrySection({ bank, card1, card2, card3 }) {
   const tokenBalance = useTokenBalance(bank.depositToken);
   const stakedBalance = useStakedBalance(bank.contract, bank.poolId);
   const stakedTokenPriceInDollars = useStakedTokenPriceInDollars(bank.depositTokenName, bank.depositToken);
-  const tokenPriceInDollars = useMemo(
-    () => (stakedTokenPriceInDollars ? stakedTokenPriceInDollars : null),
-    [stakedTokenPriceInDollars],
-  );
+  const tokenPriceInDollars =
+    bank.earnTokenName === 'TSHARE'
+      ? tShareStats
+        ? tShareStats.priceInDollars
+        : null
+      : tombStats
+      ? tombStats.priceInDollars
+      : null;
 
   const earnings = useEarnings(bank.contract, bank.earnTokenName, bank.poolId);
 
@@ -119,7 +123,7 @@ export default function CemetrySection({ bank, card1, card2, card3 }) {
           coinValue={getDisplayBalance(earnings)}
           dollarValue={`$${showTombData.earnedInDollars}`}
           disabled={earnings.eq(0)}
-          onClick={onTombReward}
+          onClick={earnings.eq(0) ? () => null : onTombReward}
         />
 
         {approveStatus !== ApprovalState.APPROVED ? (
@@ -128,7 +132,9 @@ export default function CemetrySection({ bank, card1, card2, card3 }) {
             coinValue={getDisplayBalance(stakedBalance, bank.depositToken.decimal)}
             dollarValue={`$${showTombData.stakedInDollars}`}
             disabled={approveStatus === ApprovalState.PENDING || approveStatus === ApprovalState.UNKNOWN}
-            onClick={approve}
+            onClick={
+              approveStatus === ApprovalState.PENDING || approveStatus === ApprovalState.UNKNOWN ? () => null : approve
+            }
           />
         ) : (
           <CemeterySubCard
