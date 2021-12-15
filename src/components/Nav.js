@@ -68,9 +68,9 @@ export default function Nav() {
                 </Disclosure.Button>
               </div>
               <div className="flex-shrink-0 flex items-center mx-auto sm:mx-0">
-                <span className="font-Amarante text-2xl md:text-3xl cursor-pointer select-none textShadowLg">
+                <Link to="/" className="font-Amarante text-2xl md:text-3xl cursor-pointer select-none textShadowLg">
                   Tomb Finance
-                </span>
+                </Link>
               </div>
               <div className="flex justify-center sm:items-stretch sm:justify-start md:mx-6 md:mr-16">
                 <div className="hidden sm:block sm:ml-6">
@@ -108,14 +108,14 @@ export default function Nav() {
                 <span className="ml-2 font-semibold text-sm">{tombPriceInFTM ? tombPriceInFTM : '-.----'} FTM</span>
               </div>
               <div className="flex items-center flex-col gap-y-2 sm:flex-row">
-                <img src={tbond} width={25} height={25} />
-                <span className="ml-2 font-semibold text-sm">{tBondPriceInFTM ? tBondPriceInFTM : '-.----'} FTM</span>
-              </div>
-              <div className="flex items-center flex-col gap-y-2 sm:flex-row">
                 <img src={tshare} width={25} height={25} />
                 <span className="ml-2 font-semibold text-sm">
                   {tSharePriceInFTM ? numberWithCommas(tSharePriceInFTM) : '-.----'} FTM
                 </span>
+              </div>
+              <div className="flex items-center flex-col gap-y-2 sm:flex-row">
+                <img src={tbond} width={25} height={25} />
+                <span className="ml-2 font-semibold text-sm">{tBondPriceInFTM ? tBondPriceInFTM : '-.----'} FTM</span>
               </div>
             </div>
           </div>

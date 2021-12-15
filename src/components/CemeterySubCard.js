@@ -42,7 +42,7 @@ export default function CemeteryBuyCard({
           {button1Text}
         </button>
         {onClick2 && (
-          <button onClick={() => onClick2()} className={`btn mb-2 w-max mt-6 px-5 ${disabled && 'btn-disabled'}`}>
+          <button onClick={() => onClick2()} className={`btn mb-2 w-max mt-6 px-5 btn-disabled`}>
             {button2Text}
           </button>
         )}

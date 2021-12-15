@@ -127,7 +127,7 @@ const Cemetery = () => {
               <div className="flex flex-row justify-center w-9/12 md:w-1/2 mx-auto mt-12">
                 <CemeteryCard
                   title="TOMB-FTM-LP"
-                  description="Deposiy TOMB-FTM-LP Earn TOMB"
+                  description="Deposit TOMB-FTM-LP Earn TOMB"
                   buttonText="View"
                   icon1={graveDark}
                   icon2={graveLight}

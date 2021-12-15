@@ -143,7 +143,8 @@ export default function CemetrySection({ bank, card1, card2, card3 }) {
             dollarValue={`$${showTombData.stakedInDollars}`}
             disabled={false}
             onClick1={onPresentWithdraw}
-            onClick2={onPresentZap}
+            // onClick2={onPresentZap}
+            onClick2={() => null}
             onClick3={onPresentDeposit}
           />
         )}

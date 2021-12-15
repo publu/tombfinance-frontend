@@ -15,7 +15,7 @@ function Footer() {
         <a href="https://twitter.com/tombfinance" target="_blank" rel="noreferrer noopener">
           <img src={twitter} width={20} height={20} />
         </a>
-        <a href="https://github.com/tombfinance/tombfinance-frontend" target="_blank" rel="noreferrer noopener">
+        <a href="https://github.com/tombfinance " target="_blank" rel="noreferrer noopener">
           <img src={github} width={20} height={20} />
         </a>
         <a className="mt-1" href="https://discord.gg/vANnESmVdz" target="_blank" rel="noreferrer noopener">
