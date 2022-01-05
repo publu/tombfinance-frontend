@@ -15,15 +15,15 @@ function Footer() {
         <a href="https://twitter.com/tombfinance" target="_blank" rel="noreferrer noopener">
           <img src={twitter} width={20} height={20} />
         </a>
-        <a href="https://github.com/tombfinance/tombfinance-frontend" target="_blank" rel="noreferrer noopener">
+        <a href="https://github.com/tombfinance " target="_blank" rel="noreferrer noopener">
           <img src={github} width={20} height={20} />
         </a>
         <a className="mt-1" href="https://discord.gg/vANnESmVdz" target="_blank" rel="noreferrer noopener">
           <img src={discord} width={19} height={19} />
         </a>
-        <a className="mt-1" href="https://discord.gg/vANnESmVdz" target="_blank" rel="noreferrer noopener">
+        {/* <a className="mt-1" href="https://discord.gg/vANnESmVdz" target="_blank" rel="noreferrer noopener">
           <img src={boo} width={19} height={19} />
-        </a>
+        </a> */}
         <a className="mt-1" href="https://t.me/tombfinance" target="_blank" rel="noreferrer noopener">
           <img src={telegram} width={19} height={19} />
         </a>

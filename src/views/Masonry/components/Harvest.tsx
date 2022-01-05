@@ -13,6 +13,8 @@ import useEarningsOnMasonry from '../../../hooks/useEarningsOnMasonry';
 import useTombStats from '../../../hooks/useTombStats';
 import { getDisplayBalance } from '../../../utils/formatBalance';
 
+import { numberWithCommas } from '../../../utils/utils';
+
 import MasonryItem from '../../../components/MasonryItem';
 
 import Card from '../../../components/Card.js';
@@ -41,10 +43,10 @@ const Harvest: React.FC = () => {
           </div>
         </div>
         <div className="font-semibold font-Poppins text-sm text-tomb-purple">TSHARE Staked</div>
-        <div className="font-Amarante mb-1">{getDisplayBalance(earnings)}</div>
+        <div className="font-Amarante mb-1">{numberWithCommas(parseFloat(getDisplayBalance(earnings)))}</div>
         <div className="flex justify-center font-semibold font-Poppins text-sm gap-x-1">
           <p className="text-tomb-purple">USD</p>
-          <p> {`≈ $${earnedInDollars}`}</p>
+          <p> {`≈ $${numberWithCommas(earnedInDollars)}`}</p>
         </div>
         <div className="flex justify-center gap-x-2 mt-4">
           <button

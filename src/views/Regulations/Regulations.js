@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import Page from '../../components/Page';
 import useTombFinance from '../../hooks/useTombFinance';
 
+import { numberWithCommas } from '../../utils/utils';
+
 const Regulations = () => {
   const tombFinance = useTombFinance();
   const [rows, setRows] = useState(null);
@@ -79,13 +81,13 @@ const Regulations = () => {
                   index == 0 ? 'rounded-t-3xl ' : ' '
                 } ${index == rows.length - 1 ? 'rounded-b-3xl' : ''}`}
               >
-                <span>{row.epoch}</span>
-                <span>{row.masonry}</span>
-                <span>{row.dao}</span>
-                <span>{row.dev}</span>
-                <span>{row.sum}</span>
-                <span>{row.bondsBought}</span>
-                <span>{row.bondsRedeemed}</span>
+                <span>{numberWithCommas(row.epoch)}</span>
+                <span>{numberWithCommas(row.masonry)}</span>
+                <span>{numberWithCommas(row.dao)}</span>
+                <span>{numberWithCommas(row.dev)}</span>
+                <span>{numberWithCommas(row.sum)}</span>
+                <span>{numberWithCommas(row.bondsBought)}</span>
+                <span>{numberWithCommas(row.bondsRedeemed)}</span>
               </div>
             ))}
           </div>

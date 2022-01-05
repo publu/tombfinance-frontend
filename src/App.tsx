@@ -52,7 +52,7 @@ const App: React.FC = (props) => {
             className="font-Poppins textShadowLg p-2 text-sm text-center text-black"
             style={{ backgroundColor: '#FFF2D1' }}
           >
-            <a href="https://tomb.finance/">Click here </a>if you would like to go back to the old UI
+            <a href="https://tomb.finance/">Click here for the legacy UI</a>
           </div>
           <div className={`background`} />
 

@@ -30,6 +30,8 @@ import useWithdrawFromMasonry from '../../../hooks/useWithdrawFromMasonry';
 
 import MasonryItem from '../../../components/MasonryItem';
 
+import { numberWithCommas } from '../../../utils/utils';
+
 import Card from '../../../components/Card.js';
 
 const Stake: React.FC = () => {
@@ -88,10 +90,10 @@ const Stake: React.FC = () => {
           </div>
         </div>
         <div className="font-semibold font-Poppins text-sm text-tomb-purple">TSHARE Staked</div>
-        <div className="font-Amarante mb-1">{getDisplayBalance(stakedBalance)}</div>
+        <div className="font-Amarante mb-1">{numberWithCommas(parseFloat(getDisplayBalance(stakedBalance)))}</div>
         <div className="flex justify-center font-semibold font-Poppins text-sm gap-x-1">
           <p className="text-tomb-purple">USD</p>
-          <p> {`≈ $${tokenPriceInDollars}`}</p>
+          <p> {`≈ $${numberWithCommas(tokenPriceInDollars)}`}</p>
         </div>
         <div className="flex justify-center gap-x-2 mt-4">
           {approveStatus !== ApprovalState.APPROVED ? (

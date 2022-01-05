@@ -142,7 +142,7 @@ const Home = ({ setIsHome }) => {
               usdPrice={tSharePriceInDollars ? tSharePriceInDollars : '-.--'}
               mktCap={tShareCirculatingSupply ? (tShareCirculatingSupply * tSharePriceInDollars).toFixed(2) : '-.--'}
               circSupply={tShareCirculatingSupply ? tShareCirculatingSupply : '-.--'}
-              totalSupply={tShareTotalSupply ? tShareCirculatingSupply : '-.--'}
+              totalSupply={tShareTotalSupply ? tShareTotalSupply : '-.--'}
               link={buyTShareAddress}
             />
             <TokenStatsCard
